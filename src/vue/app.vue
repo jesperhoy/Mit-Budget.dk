@@ -516,7 +516,7 @@
     },
     watch: {
       "budget.navn": function (ny, gl) {
-        document.title = 'Mit-Budget.dk' + (this.budget===null ? '' : ' - ' + this.budget.navn);
+        document.title = 'Mit-Budget.dk' + (this.budget === null || this.budget.navn==='' ? '' : ' - ' + this.budget.navn);
       }
     }
 
