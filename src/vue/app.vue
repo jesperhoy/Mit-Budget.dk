@@ -44,7 +44,7 @@
           </tr>
           <tr>
             <th>Første måned:</th>
-            <td><input type="month" v-model="budget.startmåned" required class="form-control w-auto" /></td>
+            <td><input type="month" v-model="budget.startmåned" required class="form-control" /></td>
           </tr>
           <tr>
             <th>Startsaldo:</th>
@@ -488,6 +488,7 @@
         if (NewID === this.budgetid) return;
         document.getElementById('base').style.maxWidth =NewID===null ? '960px' : '';
         document.getElementById('intro').style.display = NewID === null ? 'block' : 'none';
+        document.body.style.backgroundColor = NewID === null ? '#ccc' : 'white';
         this.budgetid = NewID;
         if (NewID === null) return;
         if (NewID === 'nyt') {
