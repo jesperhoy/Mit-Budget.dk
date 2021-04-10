@@ -1,9 +1,9 @@
 ﻿<template>
   <div>
 
-    <template v-if="GemApp">
+    <template v-if="this.budgetid === null">
 
-      <button @click="VisApp()" type="button" class="btn btn-primary"><b-icon name="new" /> Nyt budget</button>
+      <a href="#nyt" class="btn btn-primary"><b-icon name="new" /> Nyt budget</a>
 
     </template>
 
@@ -18,19 +18,19 @@
       <p>
         <button @click="KlikSave()" :disabled="BudgetJSON===OldJSON || this.budget.items.length===0" type="button" class="btn btn-primary"><b-icon name="upload" /> Gem i skyen</button>
 
-        <button v-if="BrowserKanDele && budgetid!==null" @click="DelUrl()" type="button" class="btn btn-primary"><b-icon name="share" /> Del</button>
+        <button v-if="BrowserKanDele && budgetid!=='nyt'" @click="DelUrl()" type="button" class="btn btn-primary"><b-icon name="share" /> Del</button>
 
-        <button v-if="budgetid!==null" @click.prevent="KlikKopi()" type="button" class="btn btn-primary"><b-icon name="copy" /> Lav kopi</button>
+        <button v-if="budgetid!=='nyt'" @click.prevent="KlikKopi()" type="button" class="btn btn-primary"><b-icon name="copy" /> Lav kopi</button>
 
-        <button v-if="budgetid!==null" @click.prevent="KlikSletSky()" type="button" class="btn btn-danger"><b-icon name="trash" /> Slet fra skyen</button>
+        <button v-if="budgetid!=='nyt'" @click.prevent="KlikSletSky()" type="button" class="btn btn-danger"><b-icon name="trash" /> Slet fra skyen</button>
 
-        <button v-if="budgetid!==null" @click="KlikNyt()" type="button" class="btn btn-primary"><b-icon name="new" /> Nyt budget</button>
+        <button v-if="budgetid!=='nyt'" @click="KlikNyt()" type="button" class="btn btn-primary"><b-icon name="new" /> Nyt budget</button>
       </p>
 
       <hr />
 
       <table class="form">
-        <tr v-if="budgetid!==null">
+        <tr v-if="budgetid!=='nyt' || this.budget.items.length>0">
           <th>Status:</th>
           <td>
             <div v-if="BudgetJSON===OldJSON" class="alert alert-success d-inline-block p-1 m-0"><b-icon name="check" /> Gemt i skyen</div>
@@ -211,8 +211,7 @@
   export default {
     el: '#app',
     data: {
-      GemApp: true,
-      budgetid: 'dummy',
+      budgetid: null,
       budget: null,
       EditData: null,
       EditID:0,
@@ -409,8 +408,8 @@
         return (d.getDate()+100).toString().substr(1) + '.' + (d.getMonth() + 101).toString().substr(1) + '.' + d.getFullYear();
       },
       async KlikSave() {
-        if (this.budgetid === null || this.BudgetJSON !== this.OldJSON) {
-          if (this.budgetid === null) {
+        if (this.budgetid === 'nyt' || this.BudgetJSON !== this.OldJSON) {
+          if (this.budgetid === 'nyt') {
             let r = await fetch('/api/budget', {
               method: "POST",
               headers: {
@@ -442,14 +441,14 @@
         }
       },
       async KlikSletSky() {
-        if (this.budgetid === null) return; 
+        if (this.budgetid === 'nyt') return; 
         let r = await fetch('/api/budget/'+this.budgetid, {method: "DELETE"});
         if (r.status !== 204) {
           alert('Unexpected response status code (' + r.status + ') received');
           return;
         }
-        this.budgetid = null;
-        document.location.hash = '';
+        this.budgetid = 'nyt';
+        document.location.hash = 'nyt';
         this.OldJSON = 'dummy'; //to trigger warning
         this.$refs.ModalSlet.Show();
       },
@@ -462,46 +461,45 @@
       KlikNyt() {
         this.budget = this.LavNyt();
         this.IkkeÆndret();
-        this.budgetid = null;
-        document.location.hash = '';
+        this.budgetid = 'nyt';
+        document.location.hash = 'nyt';
         this.$refs.ModalNyt.Show();
       },
       KlikKopi() {
         this.budget.navn += ' (kopi)';
-        this.budgetid = null;
-        document.location.hash = '';
+        this.budgetid = 'nyt';
+        document.location.hash = 'nyt';
         this.$refs.ModalKopi.Show();
-      },
-      VisApp() {
-        document.getElementById('base').style.maxWidth = '';
-        document.getElementById('intro').style.display = 'none';
-        this.GemApp = false;
       },
       async HashChanged() {
         let h = window.location.hash;
         let NewID = h.length <= 1 ? null : h.substr(1);
         if (NewID === this.budgetid) return;
-        if (NewID === null) {
+        document.getElementById('base').style.maxWidth =NewID===null ? '960px' : '';
+        document.getElementById('intro').style.display = NewID === null ? 'block' : 'none';
+        this.budgetid = NewID;
+        if (NewID === null) return;
+        if (NewID === 'nyt') {
           this.budget = this.LavNyt();
           this.IkkeÆndret();
-          this.budgetid = null;
           return;
         }
-        if(this.GemApp) this.VisApp();
+        this.budget = null;
         let r = await fetch('/api/budget/' + NewID);
         if (r.status === 404) {
           alert('Det angive budget findes ikke!');
-          document.location.hash = this.budgetid === null ? '' : this.budgetid;
+          this.budgetid = null;
+          document.location.hash = '';
           return;
         }
         if (r.status !== 200) {
           alert('Unexpected response status code (' + r.status + ') received');
-          document.location.hash = this.budgetid === null ? '' : this.budgetid;
+          this.budgetid = null;
+          document.location.hash = '';
           return;
         }
         this.budget = await r.json();
         this.IkkeÆndret();
-        this.budgetid = NewID;
       }
     },
     mounted() {
@@ -510,7 +508,6 @@
         function (e) {
           if (dette.OldJSON !== dette.BudgetJSON) e.returnValue = "Dine ændringer er ikke gemt. Vil du stadig lukke browser-vinduet/tabben?";
         });
-
       window.addEventListener('hashchange', this.HashChanged, false);
       this.HashChanged();
     },
