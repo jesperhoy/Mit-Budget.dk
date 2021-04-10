@@ -87,6 +87,7 @@ Public Class MitBudget
         If Not ma.Contains(kv.Key) Then Return False
         If kv.Key = "varbeløb" OrElse kv.Key = "betalingsmåneder" Then
           If Not TypeOf kv.Value Is JhJson.Array Then Return False
+          If DirectCast(kv.Value, JhJson.Array).Count <> 12 Then Return False
           For Each itm2 In DirectCast(kv.Value, JhJson.Array)
             If TypeOf itm2 Is JhJson.Object OrElse TypeOf itm2 Is JhJson.Array Then Return False
           Next

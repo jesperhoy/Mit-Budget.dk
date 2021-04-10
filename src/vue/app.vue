@@ -515,7 +515,7 @@
       let dette = this;
       window.addEventListener('beforeunload',
         function (e) {
-          if (dette.OldJSON !== dette.BudgetJSON) e.returnValue = "Dine ændringer er ikke gemt. Vil du stadig lukke browser-vinduet/tabben?";
+          if (dette.budgetid!==null && dette.OldJSON !== dette.BudgetJSON) e.returnValue = "Dine ændringer er ikke gemt. Vil du stadig lukke browser-vinduet/tabben?";
         });
       window.addEventListener('hashchange', this.HashChanged, false);
       this.HashChanged();
