@@ -201,9 +201,18 @@
       <template #footer>
         <button type="button" class="btn btn-primary" data-bs-dismiss="modal" style="min-width:6rem">OK</button>
       </template>
-
     </bs-modal>
 
+    <bs-modal title="Budget er slettet fra skyen" ref="ModalSletSky">
+      <template>
+        <p>Dit budget eksisterer lige nu kun i din browser, og er helt væk når du lukker browser-vinduet/fanen.</p>
+        <p>Hvis du slettede ved en fejl, kan du gemme budgettet igen ved at klikke på "Gem i skyen" knappen.
+        Budgettet vil så blive gemt igen på en ny adresse.</p>
+      </template>
+      <template #footer>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" style="min-width:6rem">OK</button>
+      </template>
+    </bs-modal>
   </div>
 </template>
 
@@ -450,7 +459,7 @@
         this.budgetid = 'nyt';
         document.location.hash = 'nyt';
         this.OldJSON = 'dummy'; //to trigger warning
-        this.$refs.ModalSlet.Show();
+        this.$refs.ModalSletSky.Show();
       },
       DelUrl() {
         navigator.share({
