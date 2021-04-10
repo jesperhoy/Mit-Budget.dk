@@ -2,7 +2,16 @@
 
 Public Class MitBudget
 
+  'Limit access to 1440 API requests / day / ip address = 1 every minute
+  'with a burst rate of 60 requests
+  Public Shared RateLimit As New JAH.LeakyBuckets(60, New TimeSpan(0, 1, 0))
+
   Public Shared Sub ProcReq(ctx As HttpContext)
+    If Not RateLimit.AddDrop(ctx.Request.UserHostAddress) Then
+      ctx.Response.StatusCode = 429 'Too Many Requests
+      Exit Sub
+    End If
+
     Dim id As Guid
     If ctx.Request.HttpMethod = "POST" Then
       Dim ba(CInt(ctx.Request.ContentLength) - 1) As Byte
