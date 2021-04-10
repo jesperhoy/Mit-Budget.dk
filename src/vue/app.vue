@@ -30,25 +30,27 @@
       <hr />
 
       <table class="form">
-        <tr v-if="budgetid!=='nyt' || this.budget.items.length>0">
-          <th>Status:</th>
-          <td>
-            <div v-if="BudgetJSON===OldJSON" class="alert alert-success d-inline-block p-1 m-0"><b-icon name="check" /> Gemt i skyen</div>
-            <div v-else class="alert alert-warning d-inline-block p-1 m-0"><b-icon name="warning" /> Ændringer ikke gemt</div>
-          </td>
-        </tr>
-        <tr>
-          <th>Budget-navn:</th>
-          <td><input type="text" v-model="budget.navn" required class="form-control" style="max-width:40rem" /></td>
-        </tr>
-        <tr>
-          <th>Første måned:</th>
-          <td><input type="month" v-model="budget.startmåned" required class="form-control w-auto" /></td>
-        </tr>
-        <tr>
-          <th>Startsaldo:</th>
-          <td><b-amount v-model="budget.startsaldo" /></td>
-        </tr>
+        <tbody>
+          <tr v-if="budgetid!=='nyt' || this.budget.items.length>0">
+            <th>Status:</th>
+            <td>
+              <div v-if="BudgetJSON===OldJSON" class="alert alert-success d-inline-block p-1 m-0"><b-icon name="check" /> Gemt i skyen</div>
+              <div v-else class="alert alert-warning d-inline-block p-1 m-0"><b-icon name="warning" /> Ændringer ikke gemt</div>
+            </td>
+          </tr>
+          <tr>
+            <th>Budget-navn:</th>
+            <td><input type="text" v-model="budget.navn" required class="form-control" style="max-width:40rem" /></td>
+          </tr>
+          <tr>
+            <th>Første måned:</th>
+            <td><input type="month" v-model="budget.startmåned" required class="form-control w-auto" /></td>
+          </tr>
+          <tr>
+            <th>Startsaldo:</th>
+            <td><b-amount v-model="budget.startsaldo" /></td>
+          </tr>
+        </tbody>
       </table>
 
       <hr />

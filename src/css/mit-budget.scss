@@ -79,26 +79,6 @@ label.hideinput {
 
 table.form {
   width: 100%;
-
-  & > tr {
-    & > th {
-      width: 1%;
-      vertical-align: top;
-      text-align: right;
-      white-space: nowrap;
-      padding: .3rem 1rem 1rem 0;
-    }
-
-    & > td {
-      padding: 0 0 1rem 0;
-      vertical-align: top;
-
-      &.pad {
-        padding-top: .3rem
-      }
-    }
-  }
-
   & > tbody {
     & > tr {
       & > th {
@@ -119,4 +99,10 @@ table.form {
       }
     }
   }
+}
+
+input[type="date"].form-control, input[type="month"].form-control {
+  display: inline-block;
+  min-width:125px;
+  width: auto;
 }
