@@ -17,7 +17,12 @@
 
     <div style="padding: 1rem;flex-grow:1">
     
-          <h1 class="text-primary">Mit-Budget.dk</h1>
+      <div class="d-flex">
+
+          <h1 class="text-primary me-auto">Mit-Budget.dk</h1>
+
+          <a href='https://ko-fi.com/W7W648P6I' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi2.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+        </div>
 
       <hr/>
      
@@ -59,7 +64,6 @@
   &bull; &copy; 2021 <a class="link-light" href="https://jesperhoy.dk" target="blank">Jesper Høy</a>
   &bull; <a class="link-light" href="https://github.com/jesperhoy/Mit-Budget.dk" target="_blank">Kildekode</a>
   &bull; <a class="link-light" href="https://github.com/jesperhoy/Mit-Budget.dk/issues" target="_blank">Rapporter fejl/mangler</a>
- &bull; <a class="link-light" href="https://www.buymeacoffee.com/jesperhoy" target="_blank">Køb mig en kop kaffe</a>
 </div>
 
     </div>
