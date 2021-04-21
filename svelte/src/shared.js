@@ -38,3 +38,10 @@ export function LavNyt() {
 	};
 }
 
+export function RndHexStr(length) {
+	let rv='';
+	for (let i = 0; i < length; i++) {
+		rv += Math.floor(Math.random() * 16).toString(16);
+	 }
+	return rv; 
+}

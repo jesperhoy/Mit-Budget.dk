@@ -8,8 +8,15 @@
   <title>Mit-Budget.dk</title>
 
   <link href="<%=JAH.StaticFileHash("css/mit-budget.css")%>" rel="stylesheet"/>
-  <script src="<%=JAH.StaticFileHash("scripts/vue.runtime.min.js")%>"></script>
   <script src="<%=JAH.StaticFileHash("scripts/bootstrap.min.js")%>"></script>
+
+<% If Request.RawUrl = "/svelte" Then %>
+  <script defer src="<%=JAH.StaticFileHash("scripts/mit-budget-svelte.js")%>">></script>
+<% Else %>
+  <script src="<%=JAH.StaticFileHash("scripts/vue.runtime.min.js")%>"></script>
+  <script defer src="<%=JAH.StaticFileHash("scripts/mit-budget.js")%>"></script>
+<% End If %>
+
 </head>
 <body style="background-color:#ccc">
 
@@ -51,12 +58,8 @@
         </div>
 
 <div id="app"></div>
-
-<script src="<%=JAH.StaticFileHash("scripts/mit-budget.js")%>"></script>
-
   
 </div>
-
 
 
 <div class="text-center bg-primary text-white p-2">
