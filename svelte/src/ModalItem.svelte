@@ -2,7 +2,7 @@
 
     <svelte:fragment slot="default">
     {#if data}
-    <table v-if="data" class="form">
+    <table class="form">
         <tbody>
         <tr>
             <th>Type:</th>
