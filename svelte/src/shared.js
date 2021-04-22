@@ -16,15 +16,11 @@ export function FormatBeløb(v) {
 }
 
 export function Validity(node, val) {
-	if(val===undefined || val===null) val='';
-    if(val !== '') node.setCustomValidity(val);
+    if(!!val) node.setCustomValidity(val);
     return {
         update(newVal) {
-			if(newVal===undefined || newVal===null) newVal='';
-			if(newVal===val) return;
-			val=newVal;
-			node.setCustomValidity(val);
-		}
+            node.setCustomValidity(newVal?newVal:'');
+        }
     };
 }
 
