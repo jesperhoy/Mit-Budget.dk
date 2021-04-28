@@ -12,6 +12,6 @@ export let inline=false;
 export let checked=false;
 import { createEventDispatcher } from 'svelte';
 const dispatch = createEventDispatcher();
-import { RndHexStr } from './shared.js';
+import { RndHexStr } from '../shared.js';
 let myid='radio-' + RndHexStr(16);
 </script>

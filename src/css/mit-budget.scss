@@ -52,7 +52,7 @@ $enable-gradients: true;
 
 
 html {
-  font-size: 15px;
+  font-size: 14px;
 }
 
 svg.icon {
@@ -81,7 +81,7 @@ table.form {
   width: 100%;
   & > tbody {
     & > tr {
-      & > th {
+      & > th { 
         width: 1%;
         vertical-align: top;
         text-align: right;
@@ -106,3 +106,7 @@ input[type="date"].form-control, input[type="month"].form-control {
   min-width:125px;
   width: auto;
 }
+
+
+@import "_form.scss";
+@import "_rcols.scss";

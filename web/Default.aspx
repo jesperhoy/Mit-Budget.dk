@@ -10,11 +10,11 @@
   <link href="<%=JAH.StaticFileHash("css/mit-budget.css")%>" rel="stylesheet"/>
   <script src="<%=JAH.StaticFileHash("scripts/bootstrap.min.js")%>"></script>
 
-<% If Request.RawUrl = "/svelte" Then %>
-  <script defer src="<%=JAH.StaticFileHash("scripts/mit-budget-svelte.js")%>">></script>
-<% Else %>
+<% If Request.RawUrl = "/vue" Then %>
   <script src="<%=JAH.StaticFileHash("scripts/vue.runtime.min.js")%>"></script>
-  <script defer src="<%=JAH.StaticFileHash("scripts/mit-budget.js")%>"></script>
+  <script defer src="<%=JAH.StaticFileHash("scripts/mit-budget-vue.js")%>"></script>
+<% Else %>
+  <script defer src="<%=JAH.StaticFileHash("scripts/mit-budget-svelte.js")%>">></script>
 <% End If %>
 
 </head>
@@ -28,7 +28,7 @@
 
           <h1 class="text-primary me-auto">Mit-Budget.dk</h1>
 
-          <a href='https://ko-fi.com/W7W648P6I' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi2.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+          <a href='https://ko-fi.com/jesperhoy' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi2.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
         </div>
 
       <hr/>

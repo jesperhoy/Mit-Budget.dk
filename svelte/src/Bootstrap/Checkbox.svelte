@@ -9,7 +9,7 @@
 </div>
   
 <script>
-import {Validity,RndHexStr} from './shared.js';
+import {Validity,RndHexStr} from '../shared.js';
 import { createEventDispatcher } from 'svelte';
 const dispatch = createEventDispatcher();
 export let inline=false;

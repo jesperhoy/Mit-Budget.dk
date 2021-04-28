@@ -1,0 +1,19 @@
+﻿@mixin rcols($name) {
+  $j: 1fr 1fr;
+  @for $i from 2 through 9 {
+    .#{$name}-#{$i} {
+      grid-template-columns: $j;
+    }
+    $j: 1fr $j;
+  }
+}
+ 
+@include rcols(rcols);
+
+@include media-breakpoint-up(sm) {
+  @include rcols(rcols-sm);
+}
+
+@include media-breakpoint-up(md) {
+  @include rcols(rcols-md);
+}

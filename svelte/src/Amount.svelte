@@ -5,7 +5,7 @@
     value={DispVal}
     use:Validity={IsValid ? validity:'Ugyldig værdi'}
     required={required}
-    style="text-align:right;max-width:125px"
+    style="text-align:right;max-width:125px;{style}"
     class="form-control"/>
 
 <script>
@@ -13,6 +13,7 @@ import {FormatBeløb,Validity} from './shared.js';
 export let value=0;
 export let validity='';
 export let required=false;
+export let style='';
 
 let el;
 let myval=0;

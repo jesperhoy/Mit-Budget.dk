@@ -1,0 +1,106 @@
+﻿/*
+  .form = vertical
+  .form .horizontal = horizontal
+  .form .horizontal-sm = horizontal from 576
+  .form .horizontal-md = horizontal from 768
+  .top on cells = vertical-align top
+
+  <div class="form">
+    <div>
+      <div>Name:</div>
+      <div><input.../></div>
+    </div>
+  </div>
+*/
+
+
+.form {
+
+  & > div:not(:first-child) {
+    margin-top: 1rem;
+  }
+
+  & > div > div:first-child {
+    font-weight: 600;
+    padding-bottom: .3rem;
+    display: block;
+    user-select: none;
+  }
+
+  & > div > div:last-child {
+  }
+}
+
+@mixin form-horizontal {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+
+  & > div {
+    margin-top: 0;
+    display: table-row;
+
+    > div {
+      display: table-cell;
+      padding-bottom: 1rem;
+      vertical-align: middle;
+    }
+  }
+
+  & > div:last-child > div {
+    padding-bottom: 0;
+  }
+
+  & > div > div:first-child {
+    text-align: right;
+    padding-right: 1rem;
+    width: 1px;
+    white-space: nowrap;
+
+    &.top {
+      vertical-align: top;
+      padding-top: .25rem;
+    }
+  }
+
+  & > div > div:last-child {
+    &.top {
+      vertical-align: top;
+    }
+  }
+}
+
+.form.horizontal {
+  @include form-horizontal;
+}
+
+@include media-breakpoint-up(sm) {
+  .form.horizontal-sm {
+    @include form-horizontal;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .form.horizontal-md {
+    @include form-horizontal;
+  }
+}
+
+/*@include media-breakpoint-up(lg) {
+  .form.horizontal-lg {
+    @include form-horizontal;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .form.horizontal-xl {
+    @include form-horizontal;
+  }
+}
+
+@include media-breakpoint-up(xxl) {
+  .form.horizontal-xxl {
+    @include form-horizontal;
+  }
+}
+*/

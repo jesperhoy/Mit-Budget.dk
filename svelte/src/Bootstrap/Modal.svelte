@@ -1,5 +1,5 @@
 <div class="modal fade" tabindex="-1" bind:this={el}>
-    <div style={width ? 'max-width:'+width+'px':null} class={'modal-dialog modal-dialog-centered'+(size==='md'?'':' modal-'+size)}>
+    <div style={width ? 'max-width:'+width:null} class="modal-dialog modal-dialog-centered{size==='md'?'':(' modal-'+size)}">
 
         <div class="modal-content">
 

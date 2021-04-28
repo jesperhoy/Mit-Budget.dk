@@ -17,34 +17,29 @@
 
 <hr />
 
-<table class="form">
-    <tbody>
-        {#if $BudgetID!=='nyt' || $Budget.items.length>0}
-        <tr>
-        <th>Status:</th>
-        <td>
-            {#if BudgetJSON===$OldJSON}
-            <div class="alert alert-success d-inline-block p-1 m-0"><Icon name="check" /> Gemt i skyen</div>
-            {:else} 
-            <div class="alert alert-warning d-inline-block p-1 m-0"><Icon name="warning" /> Ændringer ikke gemt</div>
-            {/if}
-        </td>
-        </tr>
-        {/if}
-        <tr>
-        <th>Budget-navn:</th>
-        <td><input type="text" bind:value={$Budget.navn} required class="form-control" style="max-width:40rem" /></td>
-        </tr>
-        <tr>
-        <th>Første måned:</th>
-        <td><input type="month" bind:value={$Budget.startmåned} required class="form-control" /></td>
-        </tr>
-        <tr>
-        <th>Startsaldo:</th>
-        <td><Amount bind:value={$Budget.startsaldo} /></td>
-        </tr>
-    </tbody>
-    </table>
+<div class="form horizontal-sm">
+   {#if $BudgetID!=='nyt' || $Budget.items.length>0}
+   <Formfield label="Status">
+      {#if BudgetJSON===$OldJSON}
+      <div class="alert alert-success d-inline-block p-1 m-0"><Icon name="check" /> Gemt i skyen</div>
+      {:else} 
+      <div class="alert alert-warning d-inline-block p-1 m-0"><Icon name="warning" /> Ændringer ikke gemt</div>
+      {/if}
+    </Formfield>  
+    {/if}
+
+    <Formfield label="Budget-navn">
+       <input type="text" bind:value={$Budget.navn} required class="form-control" style="max-width:40rem" />
+    </Formfield>       
+
+    <Formfield label="Første måned">
+      <input type="month" bind:value={$Budget.startmåned} required class="form-control" />
+    </Formfield>  
+
+    <Formfield label="Startsaldo">
+      <Amount bind:value={$Budget.startsaldo} />
+    </Formfield>  
+</div>    
 
     <hr />
 
@@ -71,7 +66,7 @@
     </p>
 
     {#if Visning==='months'}
-    <table class="table table-striped" style="width:auto">
+    <table class="table" style="width:auto">
         <tbody>
             <tr>
             <th colspan="3"></th>
@@ -135,7 +130,7 @@
 
         {:else}
 
-        <table class="table table-striped" style="width:auto">
+        <table class="table" style="width:auto">
         <tbody>
             <tr>
             <th colspan="2"></th>
@@ -226,9 +221,10 @@
 
 <script>
 import {FormatBeløb,LavNyt,BudgetID,Budget,OldJSON} from './shared.js';
+import Formfield from './JH/FormField.svelte';
 import Amount from './Amount.svelte';
 import Icon from './Icon.svelte';
-import BSModal from './BSModal.svelte';
+import BSModal from './Bootstrap/Modal.svelte';
 import ModalItem from './ModalItem.svelte';
 
 let MyModalItem;

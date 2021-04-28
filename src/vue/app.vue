@@ -75,7 +75,7 @@
 
         </p>
 
-        <table v-if="Visning==='months'" class="table table-striped" style="width:auto">
+        <table v-if="Visning==='months'" class="table" style="width:auto">
           <tbody>
             <tr>
               <th colspan="3"></th>
@@ -129,7 +129,7 @@
           </tbody>
         </table>
 
-        <table v-else class="table table-striped" style="width:auto">
+        <table v-else class="table" style="width:auto">
           <tbody>
             <tr>
               <th colspan="2"></th>
