@@ -3,17 +3,18 @@
     on:input={()=>Input(false)}
     on:change={()=>Input(true)}
     value={DispVal}
-    use:Validity={IsValid ? validity:'Ugyldig værdi'}
-    required={required}
+    use:Validity={IsValid ? validity:'Ugyldig værdi'}  
     style="text-align:right;max-width:125px;{style}"
-    class="form-control"/>
+    class="form-control"
+    {required} {id}/>
 
 <script>
 import {FormatBeløb,Validity} from './shared.js';
 export let value=0;
 export let validity='';
-export let required=false;
 export let style='';
+export let required=false;
+export let id=null;
 
 let el;
 let myval=0;

@@ -64,7 +64,7 @@
 
 <div class="text-center bg-primary text-white p-2">
     Mit-Budget.dk  
-  &bull; &copy; 2021 <a class="link-light" href="https://jesperhoy.dk" target="blank">Jesper Høy</a>
+  &bull; &copy; 2021 <a class="link-light" href="https://jesperhoy.dev" target="blank">Jesper Høy</a>
   &bull; <a class="link-light" href="https://github.com/jesperhoy/Mit-Budget.dk" target="_blank">Kildekode</a>
   &bull; <a class="link-light" href="https://github.com/jesperhoy/Mit-Budget.dk/issues" target="_blank">Rapporter fejl/mangler</a>
 </div>

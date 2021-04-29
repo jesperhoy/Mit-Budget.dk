@@ -77,7 +77,7 @@ label.hideinput {
   }
 }
 
-table.form {
+/*table.form {
   width: 100%;
   & > tbody {
     & > tr {
@@ -100,7 +100,7 @@ table.form {
     }
   }
 }
-
+*/
 input[type="date"].form-control, input[type="month"].form-control {
   display: inline-block;
   min-width:125px;
@@ -109,4 +109,3 @@ input[type="date"].form-control, input[type="month"].form-control {
 
 
 @import "_form.scss";
-@import "_rcols.scss";
