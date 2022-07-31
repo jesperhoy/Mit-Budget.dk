@@ -262,6 +262,7 @@ $: MånedNavn=(function() {
 	return rv;})();
 
 $: Posts=(function() {
+  let dummy=TilDato; // for reactivity
   let rv = [];
   if($Budget.startsaldo!==0) rv.push({
     itemid: 0,
