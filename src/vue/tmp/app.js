@@ -1,6 +1,6 @@
-﻿new Vue({render:new Function("with(this){return _c('div',[(this.budgetid === null)?[_c('a',{staticClass:\"btn btn-primary\",attrs:{\"href\":\"#nyt\"}},[_c('b-icon',{attrs:{\"name\":\"new\"}}),_v(\" Nyt budget\")],1)]:(budget===null)?[_m(0)]:[_c('p',[_c('button',{staticClass:\"btn btn-primary\",attrs:{\"disabled\":BudgetJSON===OldJSON || this.budget.items.length===0,\"type\":\"button\"},on:{\"click\":function($event){return KlikSave()}}},[_c('b-icon',{attrs:{\"name\":\"upload\"}}),_v(\" Gem i skyen\")],1),_v(\" \"),(BrowserKanDele && budgetid!=='nyt')?_c('button',{staticClass:\"btn btn-primary\",attrs:{\"type\":\"button\"},on:{\"click\":function($event){return DelUrl()}}},[_c('b-icon',{attrs:{\"name\":\"share\"}}),_v(\" Del\")],1):_e(),_v(\" \"),(budgetid!=='nyt')?_c('button',{staticClass:\"btn btn-primary\",attrs:{\"type\":\"button\"},on:{\"click\":function($event){$event.preventDefault();return KlikKopi()}}},[_c('b-icon',{attrs:{\"name\":\"copy\"}}),_v(\" Lav kopi\")],1):_e(),_v(\" \"),(budgetid!=='nyt')?_c('button',{staticClass:\"btn btn-danger\",attrs:{\"type\":\"button\"},on:{\"click\":function($event){$event.preventDefault();return KlikSletSky()}}},[_c('b-icon',{attrs:{\"name\":\"trash\"}}),_v(\" Slet fra skyen\")],1):_e(),_v(\" \"),(budgetid!=='nyt')?_c('button',{staticClass:\"btn btn-primary\",attrs:{\"type\":\"button\"},on:{\"click\":function($event){return KlikNyt()}}},[_c('b-icon',{attrs:{\"name\":\"new\"}}),_v(\" Nyt budget\")],1):_e()]),_v(\" \"),_c('hr'),_v(\" \"),_c('table',{staticClass:\"form\"},[_c('tbody',[(budgetid!=='nyt' || this.budget.items.length>0)?_c('tr',[_c('th',[_v(\"Status:\")]),_v(\" \"),_c('td',[(BudgetJSON===OldJSON)?_c('div',{staticClass:\"alert alert-success d-inline-block p-1 m-0\"},[_c('b-icon',{attrs:{\"name\":\"check\"}}),_v(\" Gemt i skyen\")],1):_c('div',{staticClass:\"alert alert-warning d-inline-block p-1 m-0\"},[_c('b-icon',{attrs:{\"name\":\"warning\"}}),_v(\" Ændringer ikke gemt\")],1)])]):_e(),_v(\" \"),_c('tr',[_c('th',[_v(\"Budget-navn:\")]),_v(\" \"),_c('td',[_c('input',{directives:[{name:\"model\",rawName:\"v-model\",value:(budget.navn),expression:\"budget.navn\"}],staticClass:\"form-control\",staticStyle:{\"max-width\":\"40rem\"},attrs:{\"type\":\"text\",\"required\":\"\"},domProps:{\"value\":(budget.navn)},on:{\"input\":function($event){if($event.target.composing)return;$set(budget, \"navn\", $event.target.value)}}})])]),_v(\" \"),_c('tr',[_c('th',[_v(\"Første måned:\")]),_v(\" \"),_c('td',[_c('input',{directives:[{name:\"model\",rawName:\"v-model\",value:(budget.startmåned),expression:\"budget.startmåned\"}],staticClass:\"form-control\",attrs:{\"type\":\"month\",\"required\":\"\"},domProps:{\"value\":(budget.startmåned)},on:{\"input\":function($event){if($event.target.composing)return;$set(budget, \"startmåned\", $event.target.value)}}})])]),_v(\" \"),_c('tr',[_c('th',[_v(\"Startsaldo:\")]),_v(\" \"),_c('td',[_c('b-amount',{model:{value:(budget.startsaldo),callback:function ($$v) {$set(budget, \"startsaldo\", $$v)},expression:\"budget.startsaldo\"}})],1)])])]),_v(\" \"),_c('hr'),_v(\" \"),(budget.items.length>0)?[_c('p',[_v(\" Visning: \"),_c('select',{directives:[{name:\"model\",rawName:\"v-model\",value:(Visning),expression:\"Visning\"}],staticClass:\"form-select d-inline-block w-auto\",on:{\"change\":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = \"_value\" in o ? o._value : o.value;return val}); Visning=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',{attrs:{\"value\":\"months\"}},[_v(\"Måned-skema\")]),_v(\" \"),_c('option',{attrs:{\"value\":\"ledger\"}},[_v(\"Som kontoudtog\")])]),_v(\" \"),(Visning !=='list')?[_v(\"    Periode: \"),_c('select',{directives:[{name:\"model\",rawName:\"v-model.number\",value:(AntalMåneder),expression:\"AntalMåneder\",modifiers:{\"number\":true}}],staticClass:\"form-select d-inline-block w-auto\",on:{\"change\":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = \"_value\" in o ? o._value : o.value;return _n(val)}); AntalMåneder=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',{attrs:{\"value\":\"12\"}},[_v(\"12 måneder\")]),_v(\" \"),_c('option',{attrs:{\"value\":\"18\"}},[_v(\"18 måneder\")]),_v(\" \"),_c('option',{attrs:{\"value\":\"24\"}},[_v(\"24 måneder\")]),_v(\" \"),_c('option',{attrs:{\"value\":\"36\"}},[_v(\"36 måneder\")])])]:_e()],2),_v(\" \"),(Visning==='months')?_c('table',{staticClass:\"table\",staticStyle:{\"width\":\"auto\"}},[_c('tbody',[_c('tr',[_c('th',{attrs:{\"colspan\":\"3\"}}),_v(\" \"),_l((AntalMåneder),function(md){return _c('th',[_v(_s(BMdNavn(md-1)))])})],2),_v(\" \"),_l((2),function(tp){return [_c('tr',[_c('td',[_v(\" \")]),_v(\" \"),_c('td',[_v(\" \")]),_v(\" \"),_c('td',{staticStyle:{\"white-space\":\"nowrap\",\"font-weight\":\"bold\"},attrs:{\"colspan\":AntalMåneder+1}},[_v(_s(tp===1?'Udgifter':'Indtægter'))])]),_v(\" \"),_l((ItemsByNavn),function(itm){return [(itm.udgift===(tp===1))?_c('tr',[_c('td',[_c('a',{staticClass:\"link-primary\",attrs:{\"href\":\"#\"},on:{\"click\":function($event){$event.preventDefault();return KlikEdit(itm.id)}}},[_c('b-icon',{attrs:{\"name\":\"edit\"}})],1)]),_v(\" \"),_c('td',[_c('a',{staticClass:\"link-danger\",attrs:{\"href\":\"#\"},on:{\"click\":function($event){$event.preventDefault();return KlikSlet(itm.id)}}},[_c('b-icon',{attrs:{\"name\":\"trash\"}})],1)]),_v(\" \"),_c('td',{staticStyle:{\"white-space\":\"nowrap\"}},[_v(_s(itm.beskriv))]),_v(\" \"),_l((AntalMåneder),function(md){return _c('td',{staticStyle:{\"text-align\":\"right\"}},[_v(_s(PostsMd[itm.id + '.' + (md-1)]===undefined ? '' : FormatBeløb(PostsMd[itm.id + '.' + (md-1)])))])})],2):_e()]})]}),_v(\" \"),_c('tr',[_c('td',[_v(\" \")]),_v(\" \"),_c('td',[_v(\" \")]),_v(\" \"),_c('td',{staticStyle:{\"white-space\":\"nowrap\",\"font-weight\":\"bold\"},attrs:{\"colspan\":AntalMåneder+1}},[_v(\"Nøgletal\")])]),_v(\" \"),_c('tr',[_c('td',[_v(\" \")]),_v(\" \"),_c('td',[_v(\" \")]),_v(\" \"),_c('td',{staticStyle:{\"white-space\":\"nowrap\"}},[_v(\"Startsaldo\")]),_v(\" \"),_c('td',{staticStyle:{\"text-align\":\"right\"}},[_v(_s(FormatBeløb(budget.startsaldo)))]),_v(\" \"),_l(((AntalMåneder-1)),function(md){return _c('td',[_v(\" \")])})],2),_v(\" \"),_c('tr',[_c('td',[_v(\" \")]),_v(\" \"),_c('td',[_v(\" \")]),_v(\" \"),_c('td',{staticStyle:{\"white-space\":\"nowrap\"}},[_v(\"Rådighedsbeløb\")]),_v(\" \"),_l((AntalMåneder),function(md){return _c('td',{staticStyle:{\"text-align\":\"right\"},domProps:{\"innerHTML\":_s(BeløbHtml(RådighedMd[md-1],false))}})})],2),_v(\" \"),_c('tr',[_c('td',[_v(\" \")]),_v(\" \"),_c('td',[_v(\" \")]),_v(\" \"),_c('td',{staticStyle:{\"white-space\":\"nowrap\"}},[_v(\"Ultimosaldo\")]),_v(\" \"),_l((AntalMåneder),function(md){return _c('td',{staticStyle:{\"text-align\":\"right\"},domProps:{\"innerHTML\":_s(BeløbHtml(UltimoMd[md-1],true))}})})],2),_v(\" \"),_c('tr',[_c('td',[_v(\" \")]),_v(\" \"),_c('td',[_v(\" \")]),_v(\" \"),_c('td',{staticStyle:{\"white-space\":\"nowrap\"}},[_v(\"Laveste saldo\")]),_v(\" \"),_l((AntalMåneder),function(md){return _c('td',{staticStyle:{\"text-align\":\"right\"},domProps:{\"innerHTML\":_s(BeløbHtml(LavesteMd[md-1],true))}})})],2)],2)]):_c('table',{staticClass:\"table\",staticStyle:{\"width\":\"auto\"}},[_c('tbody',[_m(1),_v(\" \"),_l((Posts),function(p){return _c('tr',[_c('td',[(p.itemid>0)?_c('a',{staticClass:\"link-primary\",attrs:{\"href\":\"#\"},on:{\"click\":function($event){$event.preventDefault();return KlikEdit(p.itemid)}}},[_c('b-icon',{attrs:{\"name\":\"edit\"}})],1):_e()]),_v(\" \"),_c('td',[(p.itemid>0)?_c('a',{staticClass:\"link-danger\",attrs:{\"href\":\"#\"},on:{\"click\":function($event){$event.preventDefault();return KlikSlet(p.itemid)}}},[_c('b-icon',{attrs:{\"name\":\"trash\"}})],1):_e()]),_v(\" \"),_c('td',[_v(_s(FormatDate(p.dato)))]),_v(\" \"),_c('td',[_v(_s(p.beskriv))]),_v(\" \"),_c('td',{staticStyle:{\"text-align\":\"right\"},domProps:{\"innerHTML\":_s(BeløbHtml(p.beløb,false))}}),_v(\" \"),_c('td',{staticStyle:{\"text-align\":\"right\"},domProps:{\"innerHTML\":_s(BeløbHtml(p.balance,true))}})])})],2)]),_v(\" \"),_c('p',[_c('b',[_v(\"Gns. udgift pr. måned:\")]),_v(\" \"+_s(FormatBeløb(GnsUdgift))),_c('br'),_v(\" \"),_c('b',[_v(\"Gns. indtægt pr. måned:\")]),_v(\" \"+_s(FormatBeløb(GnsIndtægt))),_c('br'),_v(\" \"),_c('b',[_v(\"Gns. rådighedsbeløb måned:\")]),_v(\" \"),_c('span',{domProps:{\"innerHTML\":_s(BeløbHtml(GnsIndtægt-GnsUdgift,true))}})]),_v(\" \"),_c('hr')]:_e(),_v(\" \"),_c('p',[_c('button',{staticClass:\"btn btn-primary\",attrs:{\"type\":\"button\"},on:{\"click\":function($event){return KlikEdit(0)}}},[_c('b-icon',{attrs:{\"name\":\"add\"}}),_v(\" Tilføj udgift/indtægt\")],1)])],_v(\" \"),_c('b-item',{ref:\"BItem\",attrs:{\"data\":EditData},on:{\"gem\":function($event){return GemItem()}}}),_v(\" \"),_c('bs-modal',{ref:\"ModalGemt\",attrs:{\"title\":\"Dit budget er nu gemt i skyen\"},scopedSlots:_u([{key:\"footer\",fn:function(){return [_c('button',{staticClass:\"btn btn-primary\",staticStyle:{\"min-width\":\"6rem\"},attrs:{\"type\":\"button\",\"data-bs-dismiss\":\"modal\"}},[_v(\"OK\")])]},proxy:true}])},[[_c('p',[_v(\" Du kan åbne dette budget igen senere ved at lave et bogmærke i din browser nu, og så åbne bogmærket senere.\"),_c('br'),_v(\" Eller du kan kopiere adressen (fra browserens adresse-felt) og gemme den et sikkert sted. \")]),_v(\" \"),_c('p',[_v(\" Du kan også dele dit budget med andre (f.eks. bank-rådgiver eller revisor) ved at sende dem adressen. Bemærk dog at dem du deler med også vil kunne ændre og/eller slette budgettet. Overvej derfor at sende dem en kopi (brug \\\"Lav kopi\\\" funktionen, gem, og send dem så den nye adresse). \")])]],2),_v(\" \"),_c('bs-modal',{ref:\"ModalKopi\",attrs:{\"title\":\"Lav Kopi\"},scopedSlots:_u([{key:\"footer\",fn:function(){return [_c('button',{staticClass:\"btn btn-primary\",staticStyle:{\"min-width\":\"6rem\"},attrs:{\"type\":\"button\",\"data-bs-dismiss\":\"modal\"}},[_v(\"OK\")])]},proxy:true}])},[[_c('p',[_v(\"Du arbejder nu i en kopi af dit tidligere budget.\")]),_v(\" \"),_c('p',[_v(\"Hvis du ikke fik gemt adressen på dit originale budget, kan du gå tilbage til det med din browsers tilbage-knap.\")])]],2),_v(\" \"),_c('bs-modal',{ref:\"ModalNyt\",attrs:{\"title\":\"Nyt budget\"},scopedSlots:_u([{key:\"footer\",fn:function(){return [_c('button',{staticClass:\"btn btn-primary\",staticStyle:{\"min-width\":\"6rem\"},attrs:{\"type\":\"button\",\"data-bs-dismiss\":\"modal\"}},[_v(\"OK\")])]},proxy:true}])},[[_c('p',[_v(\"Du arbejder nu i et nyt budget.\")]),_v(\" \"),_c('p',[_v(\"Hvis du ikke fik gemt adressen på dit tidligere budget, kan du gå tilbage til det med din browsers tilbage-knap.\")])]],2),_v(\" \"),_c('bs-modal',{ref:\"ModalSletSky\",attrs:{\"title\":\"Budget er slettet fra skyen\"},scopedSlots:_u([{key:\"footer\",fn:function(){return [_c('button',{staticClass:\"btn btn-primary\",staticStyle:{\"min-width\":\"6rem\"},attrs:{\"type\":\"button\",\"data-bs-dismiss\":\"modal\"}},[_v(\"OK\")])]},proxy:true}])},[[_c('p',[_v(\"Dit budget eksisterer lige nu kun i din browser, og er helt væk når du lukker browser-vinduet/fanen.\")]),_v(\" \"),_c('p',[_v(\"Hvis du slettede ved en fejl, kan du gemme budgettet igen ved at klikke på \\\"Gem i skyen\\\" knappen. Budgettet vil så blive gemt igen på en ny adresse.\")])]],2)],2)}"),
-staticRenderFns:[new Function("with(this){return _c('div',{staticClass:\"spinner-border text-primary\",attrs:{\"role\":\"status\"}},[_c('span',{staticClass:\"visually-hidden\"},[_v(\"Loading...\")])])}"),new Function("with(this){return _c('tr',[_c('th',{attrs:{\"colspan\":\"2\"}}),_v(\" \"),_c('th',{staticStyle:{\"text-align\":\"left\"}},[_v(\"Dato\")]),_v(\" \"),_c('th',{staticStyle:{\"text-align\":\"left\"}},[_v(\"Beskrivelse\")]),_v(\" \"),_c('th',{staticStyle:{\"text-align\":\"right\"}},[_v(\"Beløb\")]),_v(\" \"),_c('th',{staticStyle:{\"text-align\":\"right\"}},[_v(\"Saldo\")])])}")],
-el: '#app',
+﻿export default {render:new Function('with(this){return _c(\'div\',[(this.budgetid === null)?[_c(\'a\',{staticClass:"btn btn-primary",attrs:{"href":"#nyt"}},[_c(\'b-icon\',{attrs:{"name":"new"}}),_v(" Nyt budget")],1)]:(budget===null)?[_m(0)]:[_c(\'p\',[_c(\'button\',{staticClass:"btn btn-primary",attrs:{"disabled":BudgetJSON===OldJSON || this.budget.items.length===0,"type":"button"},on:{"click":function($event){return KlikSave()}}},[_c(\'b-icon\',{attrs:{"name":"upload"}}),_v(" Gem i skyen")],1),_v(" "),(BrowserKanDele && budgetid!==\'nyt\')?_c(\'button\',{staticClass:"btn btn-primary",attrs:{"type":"button"},on:{"click":function($event){return DelUrl()}}},[_c(\'b-icon\',{attrs:{"name":"share"}}),_v(" Del")],1):_e(),_v(" "),(budgetid!==\'nyt\')?_c(\'button\',{staticClass:"btn btn-primary",attrs:{"type":"button"},on:{"click":function($event){$event.preventDefault();return KlikKopi()}}},[_c(\'b-icon\',{attrs:{"name":"copy"}}),_v(" Lav kopi")],1):_e(),_v(" "),(budgetid!==\'nyt\')?_c(\'button\',{staticClass:"btn btn-danger",attrs:{"type":"button"},on:{"click":function($event){$event.preventDefault();return KlikSletSky()}}},[_c(\'b-icon\',{attrs:{"name":"trash"}}),_v(" Slet fra skyen")],1):_e(),_v(" "),(budgetid!==\'nyt\')?_c(\'button\',{staticClass:"btn btn-primary",attrs:{"type":"button"},on:{"click":function($event){return KlikNyt()}}},[_c(\'b-icon\',{attrs:{"name":"new"}}),_v(" Nyt budget")],1):_e()]),_v(" "),_c(\'hr\'),_v(" "),_c(\'table\',{staticClass:"form"},[_c(\'tbody\',[(budgetid!==\'nyt\' || this.budget.items.length>0)?_c(\'tr\',[_c(\'th\',[_v("Status:")]),_v(" "),_c(\'td\',[(BudgetJSON===OldJSON)?_c(\'div\',{staticClass:"alert alert-success d-inline-block p-1 m-0"},[_c(\'b-icon\',{attrs:{"name":"check"}}),_v(" Gemt i skyen")],1):_c(\'div\',{staticClass:"alert alert-warning d-inline-block p-1 m-0"},[_c(\'b-icon\',{attrs:{"name":"warning"}}),_v(" Ændringer ikke gemt")],1)])]):_e(),_v(" "),_c(\'tr\',[_c(\'th\',[_v("Budget-navn:")]),_v(" "),_c(\'td\',[_c(\'input\',{directives:[{name:"model",rawName:"v-model",value:(budget.navn),expression:"budget.navn"}],staticClass:"form-control",staticStyle:{"max-width":"40rem"},attrs:{"type":"text","required":""},domProps:{"value":(budget.navn)},on:{"input":function($event){if($event.target.composing)return;$set(budget, "navn", $event.target.value)}}})])]),_v(" "),_c(\'tr\',[_c(\'th\',[_v("Første måned:")]),_v(" "),_c(\'td\',[_c(\'input\',{directives:[{name:"model",rawName:"v-model",value:(budget.startmåned),expression:"budget.startmåned"}],staticClass:"form-control",attrs:{"type":"month","required":""},domProps:{"value":(budget.startmåned)},on:{"input":function($event){if($event.target.composing)return;$set(budget, "startmåned", $event.target.value)}}})])]),_v(" "),_c(\'tr\',[_c(\'th\',[_v("Startsaldo:")]),_v(" "),_c(\'td\',[_c(\'b-amount\',{model:{value:(budget.startsaldo),callback:function ($$v) {$set(budget, "startsaldo", $$v)},expression:"budget.startsaldo"}})],1)])])]),_v(" "),_c(\'hr\'),_v(" "),(budget.items.length>0)?[_c(\'p\',[_v(" Visning: "),_c(\'select\',{directives:[{name:"model",rawName:"v-model",value:(Visning),expression:"Visning"}],staticClass:"form-select d-inline-block w-auto",on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); Visning=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c(\'option\',{attrs:{"value":"months"}},[_v("Måned-skema")]),_v(" "),_c(\'option\',{attrs:{"value":"ledger"}},[_v("Som kontoudtog")])]),_v(" "),(Visning !==\'list\')?[_v("    Periode: "),_c(\'select\',{directives:[{name:"model",rawName:"v-model.number",value:(AntalMåneder),expression:"AntalMåneder",modifiers:{"number":true}}],staticClass:"form-select d-inline-block w-auto",on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return _n(val)}); AntalMåneder=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c(\'option\',{attrs:{"value":"12"}},[_v("12 måneder")]),_v(" "),_c(\'option\',{attrs:{"value":"18"}},[_v("18 måneder")]),_v(" "),_c(\'option\',{attrs:{"value":"24"}},[_v("24 måneder")]),_v(" "),_c(\'option\',{attrs:{"value":"36"}},[_v("36 måneder")])])]:_e()],2),_v(" "),(Visning===\'months\')?_c(\'table\',{staticClass:"table",staticStyle:{"width":"auto"}},[_c(\'tbody\',[_c(\'tr\',[_c(\'th\',{attrs:{"colspan":"3"}}),_v(" "),_l((AntalMåneder),function(md){return _c(\'th\',[_v(_s(BMdNavn(md-1)))])})],2),_v(" "),_l((2),function(tp){return [_c(\'tr\',[_c(\'td\',[_v(" ")]),_v(" "),_c(\'td\',[_v(" ")]),_v(" "),_c(\'td\',{staticStyle:{"white-space":"nowrap","font-weight":"bold"},attrs:{"colspan":AntalMåneder+1}},[_v(_s(tp===1?\'Udgifter\':\'Indtægter\'))])]),_v(" "),_l((ItemsByNavn),function(itm){return [(itm.udgift===(tp===1))?_c(\'tr\',[_c(\'td\',[_c(\'a\',{staticClass:"link-primary",attrs:{"href":"#"},on:{"click":function($event){$event.preventDefault();return KlikEdit(itm.id)}}},[_c(\'b-icon\',{attrs:{"name":"edit"}})],1)]),_v(" "),_c(\'td\',[_c(\'a\',{staticClass:"link-danger",attrs:{"href":"#"},on:{"click":function($event){$event.preventDefault();return KlikSlet(itm.id)}}},[_c(\'b-icon\',{attrs:{"name":"trash"}})],1)]),_v(" "),_c(\'td\',{staticStyle:{"white-space":"nowrap"}},[_v(_s(itm.beskriv))]),_v(" "),_l((AntalMåneder),function(md){return _c(\'td\',{staticStyle:{"text-align":"right"}},[_v(_s(PostsMd[itm.id + \'.\' + (md-1)]===undefined ? \'\' : FormatBeløb(PostsMd[itm.id + \'.\' + (md-1)])))])})],2):_e()]})]}),_v(" "),_c(\'tr\',[_c(\'td\',[_v(" ")]),_v(" "),_c(\'td\',[_v(" ")]),_v(" "),_c(\'td\',{staticStyle:{"white-space":"nowrap","font-weight":"bold"},attrs:{"colspan":AntalMåneder+1}},[_v("Nøgletal")])]),_v(" "),_c(\'tr\',[_c(\'td\',[_v(" ")]),_v(" "),_c(\'td\',[_v(" ")]),_v(" "),_c(\'td\',{staticStyle:{"white-space":"nowrap"}},[_v("Startsaldo")]),_v(" "),_c(\'td\',{staticStyle:{"text-align":"right"}},[_v(_s(FormatBeløb(budget.startsaldo)))]),_v(" "),_l(((AntalMåneder-1)),function(md){return _c(\'td\',[_v(" ")])})],2),_v(" "),_c(\'tr\',[_c(\'td\',[_v(" ")]),_v(" "),_c(\'td\',[_v(" ")]),_v(" "),_c(\'td\',{staticStyle:{"white-space":"nowrap"}},[_v("Rådighedsbeløb")]),_v(" "),_l((AntalMåneder),function(md){return _c(\'td\',{staticStyle:{"text-align":"right"},domProps:{"innerHTML":_s(BeløbHtml(RådighedMd[md-1],false))}})})],2),_v(" "),_c(\'tr\',[_c(\'td\',[_v(" ")]),_v(" "),_c(\'td\',[_v(" ")]),_v(" "),_c(\'td\',{staticStyle:{"white-space":"nowrap"}},[_v("Ultimosaldo")]),_v(" "),_l((AntalMåneder),function(md){return _c(\'td\',{staticStyle:{"text-align":"right"},domProps:{"innerHTML":_s(BeløbHtml(UltimoMd[md-1],true))}})})],2),_v(" "),_c(\'tr\',[_c(\'td\',[_v(" ")]),_v(" "),_c(\'td\',[_v(" ")]),_v(" "),_c(\'td\',{staticStyle:{"white-space":"nowrap"}},[_v("Laveste saldo")]),_v(" "),_l((AntalMåneder),function(md){return _c(\'td\',{staticStyle:{"text-align":"right"},domProps:{"innerHTML":_s(BeløbHtml(LavesteMd[md-1],true))}})})],2)],2)]):_c(\'table\',{staticClass:"table",staticStyle:{"width":"auto"}},[_c(\'tbody\',[_m(1),_v(" "),_l((Posts),function(p){return _c(\'tr\',[_c(\'td\',[(p.itemid>0)?_c(\'a\',{staticClass:"link-primary",attrs:{"href":"#"},on:{"click":function($event){$event.preventDefault();return KlikEdit(p.itemid)}}},[_c(\'b-icon\',{attrs:{"name":"edit"}})],1):_e()]),_v(" "),_c(\'td\',[(p.itemid>0)?_c(\'a\',{staticClass:"link-danger",attrs:{"href":"#"},on:{"click":function($event){$event.preventDefault();return KlikSlet(p.itemid)}}},[_c(\'b-icon\',{attrs:{"name":"trash"}})],1):_e()]),_v(" "),_c(\'td\',[_v(_s(FormatDate(p.dato)))]),_v(" "),_c(\'td\',[_v(_s(p.beskriv))]),_v(" "),_c(\'td\',{staticStyle:{"text-align":"right"},domProps:{"innerHTML":_s(BeløbHtml(p.beløb,false))}}),_v(" "),_c(\'td\',{staticStyle:{"text-align":"right"},domProps:{"innerHTML":_s(BeløbHtml(p.balance,true))}})])})],2)]),_v(" "),_c(\'p\',[_c(\'b\',[_v("Gns. udgift pr. måned:")]),_v(" "+_s(FormatBeløb(GnsUdgift))),_c(\'br\'),_v(" "),_c(\'b\',[_v("Gns. indtægt pr. måned:")]),_v(" "+_s(FormatBeløb(GnsIndtægt))),_c(\'br\'),_v(" "),_c(\'b\',[_v("Gns. rådighedsbeløb måned:")]),_v(" "),_c(\'span\',{domProps:{"innerHTML":_s(BeløbHtml(GnsIndtægt-GnsUdgift,true))}})]),_v(" "),_c(\'hr\')]:_e(),_v(" "),_c(\'p\',[_c(\'button\',{staticClass:"btn btn-primary",attrs:{"type":"button"},on:{"click":function($event){return KlikEdit(0)}}},[_c(\'b-icon\',{attrs:{"name":"add"}}),_v(" Tilføj udgift/indtægt")],1)])],_v(" "),_c(\'b-item\',{ref:"BItem",attrs:{"data":EditData},on:{"gem":function($event){return GemItem()}}}),_v(" "),_c(\'bs-modal\',{ref:"ModalGemt",attrs:{"title":"Dit budget er nu gemt i skyen"},scopedSlots:_u([{key:"footer",fn:function(){return [_c(\'button\',{staticClass:"btn btn-primary",staticStyle:{"min-width":"6rem"},attrs:{"type":"button","data-bs-dismiss":"modal"}},[_v("OK")])]},proxy:true}])},[[_c(\'p\',[_v(" Du kan åbne dette budget igen senere ved at lave et bogmærke i din browser nu, og så åbne bogmærket senere."),_c(\'br\'),_v(" Eller du kan kopiere adressen (fra browserens adresse-felt) og gemme den et sikkert sted. ")]),_v(" "),_c(\'p\',[_v(" Du kan også dele dit budget med andre (f.eks. bank-rådgiver eller revisor) ved at sende dem adressen. Bemærk dog at dem du deler med også vil kunne ændre og/eller slette budgettet. Overvej derfor at sende dem en kopi (brug \\"Lav kopi\\" funktionen, gem, og send dem så den nye adresse). ")])]],2),_v(" "),_c(\'bs-modal\',{ref:"ModalKopi",attrs:{"title":"Lav Kopi"},scopedSlots:_u([{key:"footer",fn:function(){return [_c(\'button\',{staticClass:"btn btn-primary",staticStyle:{"min-width":"6rem"},attrs:{"type":"button","data-bs-dismiss":"modal"}},[_v("OK")])]},proxy:true}])},[[_c(\'p\',[_v("Du arbejder nu i en kopi af dit tidligere budget.")]),_v(" "),_c(\'p\',[_v("Hvis du ikke fik gemt adressen på dit originale budget, kan du gå tilbage til det med din browsers tilbage-knap.")])]],2),_v(" "),_c(\'bs-modal\',{ref:"ModalNyt",attrs:{"title":"Nyt budget"},scopedSlots:_u([{key:"footer",fn:function(){return [_c(\'button\',{staticClass:"btn btn-primary",staticStyle:{"min-width":"6rem"},attrs:{"type":"button","data-bs-dismiss":"modal"}},[_v("OK")])]},proxy:true}])},[[_c(\'p\',[_v("Du arbejder nu i et nyt budget.")]),_v(" "),_c(\'p\',[_v("Hvis du ikke fik gemt adressen på dit tidligere budget, kan du gå tilbage til det med din browsers tilbage-knap.")])]],2),_v(" "),_c(\'bs-modal\',{ref:"ModalSletSky",attrs:{"title":"Budget er slettet fra skyen"},scopedSlots:_u([{key:"footer",fn:function(){return [_c(\'button\',{staticClass:"btn btn-primary",staticStyle:{"min-width":"6rem"},attrs:{"type":"button","data-bs-dismiss":"modal"}},[_v("OK")])]},proxy:true}])},[[_c(\'p\',[_v("Dit budget eksisterer lige nu kun i din browser, og er helt væk når du lukker browser-vinduet/fanen.")]),_v(" "),_c(\'p\',[_v("Hvis du slettede ved en fejl, kan du gemme budgettet igen ved at klikke på \\"Gem i skyen\\" knappen. Budgettet vil så blive gemt igen på en ny adresse.")])]],2)],2)}'),
+staticRenderFns:[new Function('with(this){return _c(\'div\',{staticClass:"spinner-border text-primary",attrs:{"role":"status"}},[_c(\'span\',{staticClass:"visually-hidden"},[_v("Loading...")])])}'),new Function('with(this){return _c(\'tr\',[_c(\'th\',{attrs:{"colspan":"2"}}),_v(" "),_c(\'th\',{staticStyle:{"text-align":"left"}},[_v("Dato")]),_v(" "),_c(\'th\',{staticStyle:{"text-align":"left"}},[_v("Beskrivelse")]),_v(" "),_c(\'th\',{staticStyle:{"text-align":"right"}},[_v("Beløb")]),_v(" "),_c(\'th\',{staticStyle:{"text-align":"right"}},[_v("Saldo")])])}')],
+    el: '#app',
     data: {
       budgetid: null,
       budget: null,
@@ -43,8 +43,8 @@ el: '#app',
       PostsMd() {
         let fm = this.FraDato.getFullYear() * 12 + this.FraDato.getMonth();
         let CellID,MIdx;
-        rv = {};
-        for (p of this.Posts) {
+        let rv = {};
+        for (const p of this.Posts) {
           MIdx = p.dato.getFullYear() * 12 + p.dato.getMonth() - fm;
           CellID = p.itemid + '.' + MIdx;
           rv[CellID] = rv[CellID] === undefined ? p.beløb : rv[CellID] + p.beløb;
@@ -56,7 +56,7 @@ el: '#app',
         let MIdx;
         let rv = [];
         for (let i = 0; i < this.AntalMåneder; i++) rv[i] = 0;
-        for (p of this.Posts) {
+        for (const p of this.Posts) {
           if (p.itemid === 0) continue;
           MIdx = p.dato.getFullYear() * 12 + p.dato.getMonth() - fm;
           rv[MIdx] = rv[MIdx] === undefined ? p.beløb : rv[MIdx] + p.beløb;
@@ -70,7 +70,7 @@ el: '#app',
         let cm = 0;
         let bal = 0;
         for (let i = 0; i < this.AntalMåneder; i++) rv[i] = 0;
-        for (p of this.Posts) {
+        for (const p of this.Posts) {
           MIdx = p.dato.getFullYear() * 12 + p.dato.getMonth() - fm;
           while (MIdx > cm) {
             rv[cm] = bal;
@@ -91,7 +91,7 @@ el: '#app',
         let cm = 0;
         let lav = 0;
         for (let i = 0; i < this.AntalMåneder; i++) rv[i] = 0;
-        for (p of this.Posts) {
+        for (const p of this.Posts) {
           if (p.itemid === 0) lav = p.beløb;
           MIdx = p.dato.getFullYear() * 12 + p.dato.getMonth() - fm;
           while (MIdx > cm) {
@@ -110,12 +110,12 @@ el: '#app',
       },
       GnsUdgift() {
         let rv = 0;
-        for (p of this.Posts) if (p.udgift) rv += p.beløb;
+        for (const p of this.Posts) if (p.udgift) rv += p.beløb;
         return -rv / this.AntalMåneder;
       },
       GnsIndtægt() {
         let rv = 0;
-        for (p of this.Posts) if (!p.udgift) rv += p.beløb;
+        for (const p of this.Posts) if (!p.udgift) rv += p.beløb;
         rv -= this.budget.startsaldo;
         return rv / this.AntalMåneder;
       }
@@ -309,4 +309,135 @@ el: '#app',
       }
     }
 
-});
+}
+
+  function LavItemPosteringer(item, fraDato, tilDato) {
+    let Dato1 = ParseInputDato(item.start);
+    let Dato1LDM = Dato1.getDate() === LastDayOfMonth(Dato1.getFullYear(), Dato1.getMonth());
+    let Dato2 = item.harslut ? ParseInputDato(item.slut) : new Date(3000, 0, 1);
+    let Dag = Dato1.getDate();
+    let rv = [];
+    let TxDato;
+    if (item.variabelt) {
+      let CurMd = fraDato.getMonth();
+      let CurÅr = fraDato.getFullYear();
+      TxDato = Dato1LDM ? new Date(CurÅr, CurMd, LastDayOfMonth(CurÅr, CurMd)) : FixDato(CurÅr, CurMd, Dag);
+      while (TxDato <= Dato2 && TxDato <= tilDato) {
+        if (TxDato >= Dato1 && item.varbeløb[CurMd] !== 0) {
+          rv.push({
+            itemid: item.id,
+            dato: TxDato,
+            beskriv: item.beskriv,
+            beløb: item.udgift ? -item.varbeløb[CurMd] : item.varbeløb[CurMd],
+            udgift: item.udgift
+          });
+        }
+        CurMd += 1;
+        if (CurMd > 11) { CurMd -= 12; CurÅr += 1 }
+        TxDato = Dato1LDM ? new Date(CurÅr, CurMd, LastDayOfMonth(CurÅr, CurMd)) : FixDato(CurÅr, CurMd, Dag);
+      }
+    } else if (item.hyppighed < 5) {
+      // dag-baseret frekvens
+      let step = 7 // 1=ugentligt
+      if (item.hyppighed === 2) step = 14; // hver anden uge
+      if (item.hyppighed === 3) step = 21; // hver tredie uge
+      if (item.hyppighed === 4) step = 28; // hver fjerde uge
+      TxDato = Dato1;
+      while (TxDato <= Dato2 && TxDato <= tilDato) {
+        if (TxDato >= fraDato) {
+          rv.push({
+            itemid: item.id,
+            dato: TxDato,
+            beskriv: item.beskriv,
+            beløb: item.udgift ? -item.fastbeløb : item.fastbeløb,
+            udgift: item.udgift
+          });
+        }
+        TxDato = new Date(TxDato.getTime() + (step * 86400000)); // 86.400.000 = 24 * 60 * 60 * 1000
+      }
+    } else {
+      // måned-baseret frekvens
+      let CurÅr = Dato1.getFullYear();
+      let CurMd = Dato1.getMonth();
+      let step = 1; // 5= to gange pr. md
+      if (item.hyppighed === 6) step = 1; // hver md
+      if (item.hyppighed === 7) step = 2; // hver anden md
+      if (item.hyppighed === 8) step = 3; // kvartal
+      if (item.hyppighed === 9) step = 4; // 3 gange årligt
+      if (item.hyppighed === 10) step = 6; // halvårligt
+      if (item.hyppighed === 11) step = 12; // årligt
+      if (item.hyppighed === 12) step = 1; // anførte
+      TxDato = Dato1LDM ? new Date(CurÅr, CurMd, LastDayOfMonth(CurÅr, CurMd)) : FixDato(CurÅr, CurMd, Dag);
+      while (TxDato <= Dato2 && TxDato <= tilDato) {
+        if (TxDato >= fraDato && TxDato >= Dato1 && (item.hyppighed !== 12 || item.betalingsmåneder[CurMd])) {
+          rv.push({
+            itemid: item.id,
+            dato: TxDato,
+            beskriv: item.beskriv,
+            beløb: item.udgift ? -item.fastbeløb : item.fastbeløb,
+            udgift: item.udgift
+          });
+        }
+        if (item.hyppighed === 5) {
+          // 2 gange pr. md - skub en mere ind om 15 dage
+          TxDato = new Date(TxDato.getTime() + (15 * 86400000)); // 86.400.000 = 24 * 60 * 60 * 1000
+          if (TxDato >= fraDato && TxDato <= tilDato && TxDato >= Dato1 && TxDato <= Dato2) {
+            rv.push({
+              itemid: item.id,
+              dato: TxDato,
+              beskriv: item.beskriv,
+              beløb: item.udgift ? -item.fastbeløb : item.fastbeløb,
+              udgift: item.udgift
+            });
+          }
+        }
+        CurMd += step;
+        if (CurMd > 11) { CurMd -= 12; CurÅr += 1 }
+        TxDato = Dato1LDM ? new Date(CurÅr, CurMd, LastDayOfMonth(CurÅr, CurMd)) : FixDato(CurÅr, CurMd, Dag);
+      }
+    }
+    return rv;
+  }
+
+
+  function LavPosteringer(items, fraDato, tilDato, startSaldo) {
+    let rv = [];
+    if (startSaldo !== 0) rv.push({
+      itemid: 0,
+      dato: fraDato,
+      beskriv: "Start saldo",
+      beløb: startSaldo,
+      udgift: false,
+    });
+
+    for (const itm of items) {
+      rv = rv.concat(LavItemPosteringer(itm, fraDato, tilDato));
+    }
+    rv.sort(function (a, b) {
+      if (a.dato < b.dato) return -1;
+      if (a.dato > b.dato) return 1;
+      return 0;
+    });
+    let bal = 0;
+    for (const p of rv) {
+      bal += p.beløb;
+      p.balance = bal;
+    }
+    return rv;
+  }
+
+  function LastDayOfMonth(year, monthIdx) {
+    if (monthIdx !== 1) return [31, 0, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][monthIdx];
+    if (year === 2100) return 28;
+    return year % 4 === 0 ? 29 : 28;
+  }
+
+  function ParseInputDato(x) {
+    return new Date(parseInt(x.substr(0, 4)), parseInt(x.substr(5, 2)) - 1, parseInt(x.substr(8, 2)));
+  }
+
+  function FixDato(year, monthIdx, day) {
+    let ldm = LastDayOfMonth(year, monthIdx);
+    if (day > ldm) day = ldm;
+    return new Date(year, monthIdx, day);
+  }

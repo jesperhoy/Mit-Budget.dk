@@ -1,6 +1,6 @@
-﻿Vue.component('bs-checkbox',{render:new Function("with(this){return _c('div',{class:'form-check'+(inline?' form-check-inline':'')},[_c('input',{staticClass:\"form-check-input\",attrs:{\"type\":\"checkbox\",\"id\":myid},domProps:{\"checked\":checked},on:{\"input\":function($event){return $emit('input',$event.target.checked)}}}),_v(\" \"),_c('label',{staticClass:\"form-check-label\",attrs:{\"for\":myid}},[_t(\"default\")],2)])}"),
+﻿export default {render:new Function('with(this){return _c(\'div\',{class:\'form-check\'+(inline?\' form-check-inline\':\'\')},[_c(\'input\',{staticClass:"form-check-input",attrs:{"type":"checkbox","id":myid},domProps:{"checked":checked},on:{"input":function($event){return $emit(\'input\',$event.target.checked)}}}),_v(" "),_c(\'label\',{staticClass:"form-check-label",attrs:{"for":myid}},[_t("default")],2)])}'),
 staticRenderFns:[],
-model: {
+    model: {
       prop: 'checked',
       event: 'input'
     },
@@ -16,4 +16,4 @@ model: {
       return { myid: 'checkbox-' + s };
     }
 
-});
+}

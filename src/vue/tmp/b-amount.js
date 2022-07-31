@@ -1,6 +1,6 @@
-﻿Vue.component('b-amount',{render:new Function("with(this){return _c('input',{directives:[{name:\"validity\",rawName:\"v-validity\",value:(BadVal ? 'Ugyldig værdi' : validity),expression:\"BadVal ? 'Ugyldig værdi' : validity\"}],staticClass:\"form-control\",staticStyle:{\"text-align\":\"right\",\"max-width\":\"125px\"},attrs:{\"type\":\"text\"},on:{\"input\":function($event){return Input(false)},\"change\":function($event){return Input(true)}}})}"),
+﻿export default {render:new Function('with(this){return _c(\'input\',{directives:[{name:"validity",rawName:"v-validity",value:(BadVal ? \'Ugyldig værdi\' : validity),expression:"BadVal ? \'Ugyldig værdi\' : validity"}],staticClass:"form-control",staticStyle:{"text-align":"right","max-width":"125px"},attrs:{"type":"text"},on:{"input":function($event){return Input(false)},"change":function($event){return Input(true)}}})}'),
 staticRenderFns:[],
-props: {
+    props: {
       value: {
         required:true,
         type: Number        
@@ -44,4 +44,4 @@ props: {
       this.myval = this.value;
       this.UpdateDisplayValue();
     }
-});
+}

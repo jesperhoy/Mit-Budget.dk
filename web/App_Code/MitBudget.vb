@@ -16,9 +16,10 @@ Public Class MitBudget
     If ctx.Request.HttpMethod = "POST" Then
       Dim ba(CInt(ctx.Request.ContentLength) - 1) As Byte
       ctx.Request.InputStream.Read(ba, 0, CInt(ctx.Request.ContentLength))
-      If Not VerifyUpload(ba) Then ctx.Response.StatusCode = 400 : Exit Sub
+      Dim x = System.Text.Encoding.UTF8.GetString(ba)
+      If Not VerifyUpload(x) Then ctx.Response.StatusCode = 400 : Exit Sub
       id = Guid.NewGuid()
-      Storage.Add(id, GZip(ba))
+      Storage.Add(id, x)
       ctx.Response.StatusCode = 201 ' created
       ctx.Response.AddHeader("Location", "/" & id.ToString().Replace("-", ""))
       Exit Sub
@@ -28,17 +29,17 @@ Public Class MitBudget
     If Not Guid.TryParse(pq.Substring(s.Length), id) Then ctx.Response.StatusCode = 404 : Exit Sub
     Select Case ctx.Request.HttpMethod
       Case "GET"
-        Dim ba = Storage.Fetch(id)
-        If ba Is Nothing Then ctx.Response.StatusCode = 404 : Exit Sub
+        Dim x = Storage.Fetch(id)
+        If x Is Nothing Then ctx.Response.StatusCode = 404 : Exit Sub
         ctx.Response.ContentType = "application/json"
-        ctx.Response.Headers.Add("Content-Encoding", "GZip")
-        ctx.Response.BinaryWrite(ba)
+        ctx.Response.Write(x)
 
       Case "PUT"
         Dim ba(CInt(ctx.Request.ContentLength) - 1) As Byte
         ctx.Request.InputStream.Read(ba, 0, CInt(ctx.Request.ContentLength))
-        If Not VerifyUpload(ba) Then ctx.Response.StatusCode = 400 : Exit Sub
-        If Storage.Update(id, GZip(ba)) Then
+        Dim x = System.Text.Encoding.UTF8.GetString(ba)
+        If Not VerifyUpload(x) Then ctx.Response.StatusCode = 400 : Exit Sub
+        If Storage.Update(id, x) Then
           ctx.Response.StatusCode = 204 ' ok - no content
         Else
           ctx.Response.StatusCode = 404 ' not found
@@ -56,20 +57,7 @@ Public Class MitBudget
     End Select
   End Sub
 
-  Public Shared Function GZip(ba As Byte()) As Byte()
-    Dim strm1 = New System.IO.MemoryStream
-    Dim strm2 = New System.IO.Compression.GZipStream(strm1, System.IO.Compression.CompressionLevel.Optimal, True)
-    strm2.Write(ba, 0, ba.Length)
-    strm2.Close()
-    Dim rv(CInt(strm1.Length) - 1) As Byte
-    strm1.Position = 0
-    strm1.Read(rv, 0, CInt(strm1.Length))
-    strm1.Close()
-    Return rv
-  End Function
-
-  Private Shared Function VerifyUpload(ba As Byte()) As Boolean
-    Dim x = System.Text.Encoding.UTF8.GetString(ba)
+  Private Shared Function VerifyUpload(x As String) As Boolean
     Dim o = DirectCast(JhJson.Parse(x), JhJson.Object)
     Dim ma = {"navn", "startmåned", "startsaldo", "items", "nextid"}
     If o.Members.Count <> ma.Count Then Return False
@@ -92,7 +80,7 @@ Public Class MitBudget
             If TypeOf itm2 Is JhJson.Object OrElse TypeOf itm2 Is JhJson.Array Then Return False
           Next
         Else
-            If TypeOf kv.Value Is JhJson.Object OrElse TypeOf kv.Value Is JhJson.Array Then Return False
+          If TypeOf kv.Value Is JhJson.Object OrElse TypeOf kv.Value Is JhJson.Array Then Return False
         End If
       Next
     Next
