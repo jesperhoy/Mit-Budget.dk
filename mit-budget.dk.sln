@@ -3,39 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "web", "web\", "{F66B32EF-1A8D-4D0F-B0F0-5CCE61113BDE}"
-	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_61860"
-		Debug.AspNetCompiler.PhysicalPath = "web\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_61860\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_61860"
-		Release.AspNetCompiler.PhysicalPath = "web\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_61860\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "61860"
-		SlnRelativePath = "web\"
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A2ADA983-6194-47CD-9BB0-D1024B95CEFB}"
 	ProjectSection(SolutionItems) = preProject
 		readme.md = readme.md
 	EndProjectSection
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "wap", "wap\wap.vbproj", "{1C78D0A0-3ED5-422F-A848-B17DC24E3AAC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F66B32EF-1A8D-4D0F-B0F0-5CCE61113BDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F66B32EF-1A8D-4D0F-B0F0-5CCE61113BDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C78D0A0-3ED5-422F-A848-B17DC24E3AAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C78D0A0-3ED5-422F-A848-B17DC24E3AAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C78D0A0-3ED5-422F-A848-B17DC24E3AAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C78D0A0-3ED5-422F-A848-B17DC24E3AAC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

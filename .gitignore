@@ -1,2 +1,6 @@
 ﻿.vs
 packages
+wap/bin
+wap/obj
+*.user
+publish
