@@ -2,12 +2,8 @@
 
 Public Class storage
 
-  Public Shared Function OpenDB() As System.Data.SQLite.SQLiteConnection
-    Dim rv = New System.Data.SQLite.SQLiteConnection("Data Source=c:\sqlite-data\mit-budget\main.db;Version=3;")
-    rv.Open()
-    rv.ExecuteNonQuery("PRAGMA journal_mode=WAL;")
-    rv.ExecuteNonQuery("PRAGMA synchronous=NORMAL;")
-    Return rv
+  Public Shared Function OpenDB() As JHSQLiteClient.Connection
+    Return JHSQLiteClient.Connection.FromConnString(ConfigurationManager.AppSettings("SQLiteMitBudget"))
   End Function
 
   Public Shared Function Fetch(id As Guid) As String
