@@ -4,3 +4,4 @@ wap/bin
 wap/obj
 *.user
 publish
+src/vue/tmp
