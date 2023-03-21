@@ -9,6 +9,7 @@
     With System.Web.Routing.RouteTable.Routes
       .MapPageRoute("vue-version", "vue", "~/default.aspx")
       .MapPageRoute("svelte-version", "svelte", "~/default.aspx")
+      .MapPageRoute("frontview-version", "frontview", "~/default.aspx")
     End With
   End Sub
 

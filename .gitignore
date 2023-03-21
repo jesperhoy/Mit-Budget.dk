@@ -5,3 +5,4 @@ wap/obj
 *.user
 publish
 src/vue/tmp
+src-frontview/node_modules

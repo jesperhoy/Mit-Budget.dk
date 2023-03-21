@@ -13,8 +13,11 @@
 <% If Request.RawUrl = "/vue" Then %>
   <script src="<%=JAH.StaticFileHash("scripts/vue.runtime.min.js")%>"></script>
   <script defer src="<%=JAH.StaticFileHash("scripts/mit-budget-vue.js")%>"></script>
-<% Else %>
+<% ElseIf Request.RawUrl = "/svelte" Then %>
   <script defer src="<%=JAH.StaticFileHash("scripts/mit-budget-svelte.js")%>">></script>
+<% Else %>
+  <script src="<%=JAH.StaticFileHash("scripts/frontview.min.js")%>"></script>
+  <script defer src="<%=JAH.StaticFileHash("scripts/mit-budget-frontview.js")%>"></script>
 <% End If %>
 
 </head>
@@ -64,7 +67,7 @@
 
 <div class="text-center bg-primary text-white p-2">
     Mit-Budget.dk  
-  &bull; &copy; 2021 <a class="link-light" href="https://jesperhoy.dev" target="blank">Jesper Høy</a>
+  &bull; &copy; 2021-<%=Now.Year%> <a class="link-light" href="https://jesperhoy.dev" target="blank">Jesper Høy</a>
   &bull; <a class="link-light" href="https://github.com/jesperhoy/Mit-Budget.dk" target="_blank">Kildekode</a>
   &bull; <a class="link-light" href="https://github.com/jesperhoy/Mit-Budget.dk/issues" target="_blank">Rapporter fejl/mangler</a>
 </div>
