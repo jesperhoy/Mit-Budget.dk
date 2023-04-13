@@ -83,9 +83,9 @@
             {#if itm.udgift===(tp===1)}
                 <tr>
                 <!-- svelte-ignore a11y-invalid-attribute -->
-                <td><a href="#" on:click|preventDefault={KlikEdit(itm.id)} class="link-primary"><Icon name="edit" /></a></td>
+                <td><a href="#" on:click|preventDefault={()=>KlikEdit(itm.id)} class="link-primary"><Icon name="edit" /></a></td>
                 <!-- svelte-ignore a11y-invalid-attribute -->
-                <td><a href="#" on:click|preventDefault={KlikSlet(itm.id)} class="link-danger"><Icon name="trash" /></a></td> 
+                <td><a href="#" on:click|preventDefault={()=>KlikSlet(itm.id)} class="link-danger"><Icon name="trash" /></a></td> 
                 <td style="white-space:nowrap">{itm.beskriv}</td>
                 {#each MånedNavn as md,i}
                 <td style="text-align:right">{PostsMd[itm.id + '.' + i]===undefined ? '' : FormatBeløb(PostsMd[itm.id + '.' + i])}</td> 
@@ -145,9 +145,9 @@
             <td colspan="2">&nbsp;</td>
             {:else}
             <!-- svelte-ignore a11y-invalid-attribute -->
-            <td><a href="#" on:click|preventDefault={KlikEdit(p.itemid)} class="link-primary"><Icon name="edit" /></a></td>
+            <td><a href="#" on:click|preventDefault={()=>KlikEdit(p.itemid)} class="link-primary"><Icon name="edit" /></a></td>
             <!-- svelte-ignore a11y-invalid-attribute -->
-            <td><a href="#" on:click|preventDefault={KlikSlet(p.itemid)} class="link-danger"><Icon name="trash" /></a></td>
+            <td><a href="#" on:click|preventDefault={()=>KlikSlet(p.itemid)} class="link-danger"><Icon name="trash" /></a></td>
             {/if}
             <td>{FormatDate(p.dato)}</td>
             <td>{p.beskriv}</td>

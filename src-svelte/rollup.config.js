@@ -34,7 +34,7 @@ export default {
 		sourcemap: !production,
 		format: 'iife',
 		name: 'app',
-		file: '../web/scripts/mit-budget-svelte.js'
+		file: '../wap/scripts/mit-budget-svelte.js'
 	},
 	plugins: [
 		svelte({
