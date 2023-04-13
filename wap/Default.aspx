@@ -15,6 +15,8 @@
   <script defer src="<%=JAH.StaticFileHash("scripts/mit-budget-vue.js")%>"></script>
 <% ElseIf Request.RawUrl = "/svelte" Then %>
   <script defer src="<%=JAH.StaticFileHash("scripts/mit-budget-svelte.js")%>">></script>
+<% ElseIf Request.RawUrl = "/svelte-ts" Then %>
+  <script defer src="<%=JAH.StaticFileHash("scripts/mit-budget-svelte-ts.js")%>">></script>
 <% ElseIf Request.RawUrl = "/frontview-jsdoc" Then %>
   <script src="<%=JAH.StaticFileHash("scripts/frontview.min.js")%>"></script>
   <script defer src="<%=JAH.StaticFileHash("scripts/mit-budget-frontview-jsdoc.js")%>"></script>
