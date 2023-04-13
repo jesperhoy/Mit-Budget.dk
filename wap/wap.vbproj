@@ -152,6 +152,7 @@
     </None>
     <None Include="packages.config" />
     <Content Include="scripts\frontview.min.js" />
+    <Content Include="scripts\mit-budget-frontview-jsdoc.js" />
     <Content Include="scripts\mit-budget-frontview.js" />
     <Content Include="Web.config" />
     <None Include="Web.Debug.config">

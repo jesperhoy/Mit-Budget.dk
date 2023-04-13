@@ -4,5 +4,6 @@ wap/bin
 wap/obj
 *.user
 publish
-src/vue/tmp
 src-frontview/node_modules
+src-frontview-jsdoc/node_modules
+src-svelte/node_modules

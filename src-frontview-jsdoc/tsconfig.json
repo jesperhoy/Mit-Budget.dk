@@ -1,0 +1,19 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "noEmit": true,
+    "noEmitOnError": true,
+    "removeComments": true,
+    "sourceMap": false,
+    "target": "ESNext",
+    "noImplicitReturns": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "module": "ESNext",
+    "checkJs": true,
+  },
+  "exclude": [
+    "node_modules",
+    "wwwroot"
+  ]
+}

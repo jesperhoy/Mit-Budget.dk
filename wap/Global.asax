@@ -10,6 +10,7 @@
       .MapPageRoute("vue-version", "vue", "~/default.aspx")
       .MapPageRoute("svelte-version", "svelte", "~/default.aspx")
       .MapPageRoute("frontview-version", "frontview", "~/default.aspx")
+      .MapPageRoute("frontview-jsdoc", "frontview-jsdoc", "~/default.aspx")
     End With
   End Sub
 
