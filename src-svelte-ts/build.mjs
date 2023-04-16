@@ -2,7 +2,7 @@ import esbuild from "esbuild";
 import esbuildSvelte from "esbuild-svelte";
 import sveltePreprocess from "svelte-preprocess";
 
-let dev=true;
+let dev=false;
 
 esbuild
   .build({
@@ -10,8 +10,8 @@ esbuild
     mainFields: ["svelte", "browser", "module", "main"],
     target:["es2020","safari12","chrome71"],
     bundle: true,
-    minify:true,
-    sourcemap:true,
+    minify:!dev,
+    sourcemap:dev,
     outfile:"../wap/scripts/mit-budget-svelte-ts.js",
     plugins: [
       esbuildSvelte({
