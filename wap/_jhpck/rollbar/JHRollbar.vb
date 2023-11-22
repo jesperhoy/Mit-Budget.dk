@@ -140,21 +140,28 @@
     Return oData
   End Function
 
-  Private Shared Function UnwrapException(ex As Exception) As String
+  Private Shared Function UnwrapException(ex As Exception, Optional title As String = "Exception") As String
     Dim sb As New StringBuilder
-    sb.AppendLine("--- Exception: ---")
-    While ex IsNot Nothing
-      sb.AppendLine("Message: " & ex.Message)
-      sb.AppendLine("Source: " & ex.Source)
-      sb.AppendLine("Type: " & ex.GetType.ToString)
-      sb.AppendLine("Stack Trace:")
-      sb.AppendLine(ex.StackTrace)
-      ex = ex.InnerException
-      If ex IsNot Nothing Then
+    sb.AppendLine("--- " & title & ": ---")
+    sb.AppendLine("Message: " & ex.Message)
+    sb.AppendLine("Source: " & ex.Source)
+    sb.AppendLine("Type: " & ex.GetType.ToString)
+    sb.AppendLine("Stack Trace:")
+    sb.AppendLine(ex.StackTrace)
+    If TypeOf ex Is AggregateException Then
+      Dim ct = 0
+      For Each inEx In DirectCast(ex, AggregateException).InnerExceptions
+        ct += 1
         sb.AppendLine()
-        sb.AppendLine("--- Inner exception: ---")
+        sb.Append(UnwrapException(inEx, "Aggregate inner exception (" & ct & ")"))
+      Next
+    Else
+      If ex.InnerException IsNot Nothing Then
+        sb.AppendLine()
+        sb.Append(UnwrapException(ex.InnerException, "Inner exception"))
       End If
-    End While
+    End If
+
     Return sb.ToString()
   End Function
 
