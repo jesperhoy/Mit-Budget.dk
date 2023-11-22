@@ -3,6 +3,8 @@
 <script runat="server">
 
   Sub Application_Start(ByVal sender As Object, ByVal e As EventArgs)
+    JHRollbar.Init(ConfigurationManager.AppSettings("MitBudgetRollbarToken"))
+
     JAH.AddRoute("api/budget/{id}", AddressOf MitBudget.ProcReq)
     JAH.AddRoute("api/budget", AddressOf MitBudget.ProcReq)
 
@@ -13,6 +15,10 @@
       .MapPageRoute("frontview-version", "frontview", "~/default.aspx")
       .MapPageRoute("frontview-jsdoc-version", "frontview-jsdoc", "~/default.aspx")
     End With
+  End Sub
+
+  Sub Application_Error(ByVal sender As Object, ByVal e As EventArgs)
+    JHRollbar.ApplicationError()
   End Sub
 
 </script>
