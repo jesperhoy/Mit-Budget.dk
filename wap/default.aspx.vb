@@ -5,7 +5,7 @@ Partial Class _Default
   Private Sub _Default_Load(sender As Object, e As EventArgs) Handles Me.Load
     If Request.IsLocal Then Exit Sub
     If Request.Url.Host.ToLower <> "mit-budget.dk" OrElse
-       Not Request.IsSecureConnection Then Response.RedirectPermanent("https://mit-budget.dk")
+       Not Request.IsSecureConnection Then Response.RedirectPermanent("https://mit-budget.dk" & Request.RawUrl)
   End Sub
 
 End Class

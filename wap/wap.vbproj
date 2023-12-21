@@ -154,9 +154,7 @@
     </None>
     <None Include="packages.config" />
     <Content Include="scripts\frontview.min.js" />
-    <Content Include="scripts\mit-budget-frontview-jsdoc.js" />
     <Content Include="scripts\mit-budget-frontview.js" />
-    <Content Include="scripts\mit-budget-svelte-ts.js" />
     <Content Include="Web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -173,7 +171,6 @@
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\mit-budget-svelte.js" />
     <Content Include="scripts\mit-budget-vue.js" />
-    <Content Include="scripts\vue.js" />
     <Content Include="scripts\vue.runtime.min.js" />
   </ItemGroup>
   <ItemGroup />
