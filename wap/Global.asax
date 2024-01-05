@@ -3,7 +3,7 @@
 <script runat="server">
 
   Sub Application_Start(ByVal sender As Object, ByVal e As EventArgs)
-    JHRollbar.Init(ConfigurationManager.AppSettings("MitBudgetRollbarToken"))
+    JHRollbar.Init(JHSharedConfig.Get("rollbar", "mitbudget"))
 
     JAH.AddRoute("api/budget/{id}", AddressOf MitBudget.ProcReq)
     JAH.AddRoute("api/budget", AddressOf MitBudget.ProcReq)

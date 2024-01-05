@@ -7,3 +7,5 @@ publish
 src-frontview/node_modules
 src-frontview-jsdoc/node_modules
 src-svelte/node_modules
+cslib/bin
+cslib/obj

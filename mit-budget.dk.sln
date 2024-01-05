@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "wap", "wap\wap.vbproj", "{1C78D0A0-3ED5-422F-A848-B17DC24E3AAC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cslib", "cslib\cslib.csproj", "{B6090786-FCB5-4077-A56A-3EBC460578E4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{1C78D0A0-3ED5-422F-A848-B17DC24E3AAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C78D0A0-3ED5-422F-A848-B17DC24E3AAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C78D0A0-3ED5-422F-A848-B17DC24E3AAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6090786-FCB5-4077-A56A-3EBC460578E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6090786-FCB5-4077-A56A-3EBC460578E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6090786-FCB5-4077-A56A-3EBC460578E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6090786-FCB5-4077-A56A-3EBC460578E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

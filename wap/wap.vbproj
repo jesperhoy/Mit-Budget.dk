@@ -173,7 +173,12 @@
     <Content Include="scripts\mit-budget-vue.js" />
     <Content Include="scripts\vue.runtime.min.js" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\cslib\cslib.csproj">
+      <Project>{b6090786-fcb5-4077-a56a-3ebc460578e4}</Project>
+      <Name>cslib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -3,7 +3,7 @@
 Public Class storage
 
   Public Shared Function OpenDB() As JHSQLiteClient.Connection
-    Return JHSQLiteClient.Connection.FromConnString(ConfigurationManager.AppSettings("SQLiteMitBudget"))
+    Return JHSQLiteClient.Connection.FromConnString(JHSharedConfig.Get("sqlite", "MitBudget"))
   End Function
 
   Public Shared Function Fetch(id As Guid) As String
