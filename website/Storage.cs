@@ -6,7 +6,9 @@
 
   public static string Fetch(Guid id) {
     using (var dbConn = OpenDB()) {
-      return dbConn.ExecuteScalar<string>("SELECT data FROM budget WHERE id=@p1", id.ToString());
+      var rv= dbConn.ExecuteScalar("SELECT data FROM budget WHERE id=@p1", id.ToString());
+      if (rv.IsNull) return null;
+      return rv.AsString;
     }
   }
 
