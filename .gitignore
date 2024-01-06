@@ -1,11 +1,9 @@
 ﻿.vs
 packages
-wap/bin
-wap/obj
+website/bin
+website/obj
 *.user
 publish
 src-frontview/node_modules
 src-frontview-jsdoc/node_modules
 src-svelte/node_modules
-cslib/bin
-cslib/obj

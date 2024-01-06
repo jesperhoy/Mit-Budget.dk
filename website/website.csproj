@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="FrackPages\" />
+    <Folder Include="_jhpck\AspNetHelpers-any-cs\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JhJson" Version="1.12.0" />
+    <PackageReference Include="JHSQLiteClient" Version="0.7.1" />
+  </ItemGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="C:\Develop\private\Frack\TemplateCompiler\bin\Release\TemplateCompiler.exe -cs -static $(ProjectDir)" />
+  </Target>
+
+</Project>
