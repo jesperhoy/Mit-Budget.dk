@@ -23,7 +23,7 @@ public static class JHErrorHandler {
           await ctx.Response.WriteAsync("Server error! The proper authorities have been alerted, and we will try to get this fixed ASAP!");
         } catch {
         }
-        throw ex;
+        throw;
       }
     });
   }
