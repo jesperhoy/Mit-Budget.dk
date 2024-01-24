@@ -25,7 +25,7 @@
     }
     const string s = "/api/budget/";
     var pq = ctx.Request.Path.ToString();
-    if (!Guid.TryParse(pq.Substring(s.Length), out id)) {
+    if (pq.Length<s.Length || !Guid.TryParse(pq.Substring(s.Length), out id)) {
       ctx.Response.StatusCode = 404;
       return;
     }
