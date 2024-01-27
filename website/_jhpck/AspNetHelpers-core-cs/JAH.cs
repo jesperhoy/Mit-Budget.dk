@@ -13,9 +13,6 @@
     };
     return System.Text.Encoding.UTF8.GetString(buf);
   }
-  async public static Task<JhJson.BaseValue> BodyAsJhJson(this HttpRequest req) {
-    return JhJson.Parse(await BodyAsString(req));
-  }
 
   public static string MD5EncodeHex(byte[] buffer) {
     var md5=System.Security.Cryptography.MD5.Create();

@@ -11,7 +11,7 @@ public static class JHAspNetCoreRouting {
     if (idn == domain) {
       idn = null;
     }
-    app.Use((RequestDelegate nxt) => (HttpContext ctx) => {
+    app.Use((ctx, nxt) => {
       var rDom = ctx.Request.Host.Host.ToLower();
       if (ctx.Request.IsHttps != https || (rDom != domain && (idn == null || rDom != idn))) {
         ctx.Response.Redirect((https ? "https://" : "http://") + domain + ctx.Request.GetEncodedPathAndQuery());

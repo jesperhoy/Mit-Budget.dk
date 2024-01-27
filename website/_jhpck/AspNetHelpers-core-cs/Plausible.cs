@@ -32,7 +32,11 @@ public static class Plausible {
     {
       System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
       System.IO.MemoryStream MemStrm = new System.IO.MemoryStream((int)ctx.Request.ContentLength);
-      await ctx.Request.Body.CopyToAsync(MemStrm);
+      try {
+        await ctx.Request.Body.CopyToAsync(MemStrm);
+      } catch(Microsoft.AspNetCore.Connections.ConnectionResetException) { // got a few of these
+        return;
+      }
       var wc = new System.Net.WebClient();
       wc.Headers.Add("Content-Type", ctx.Request.Headers["Content-Type"]);
       wc.Headers.Add("User-Agent", ctx.Request.Headers["User-Agent"]);

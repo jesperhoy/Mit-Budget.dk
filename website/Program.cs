@@ -4,8 +4,10 @@ JAH.App = app;
 
 app.UseStatusCodePages();
 
-if(!app.Environment.IsDevelopment()) {
-  app.UseJHErrorHandler("mit-budget.dk");
+if (app.Environment.IsDevelopment()) {
+  app.UseDeveloperExceptionPage();
+} else { 
+  app.UseSeq("hEqf13BOdDuA13HJSSC5");
   app.UseDomainRedirection("mit-budget.dk");
 }
 app.UseFrackStatic();
