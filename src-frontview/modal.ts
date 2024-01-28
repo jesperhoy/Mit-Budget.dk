@@ -36,7 +36,7 @@ export class CmpModal {
   }
   #mount(el:HTMLElement) {
     setTimeout(()=>{
-      this.#MyModal = new bootstrap.Modal(el);
+      this.#MyModal = new bootstrap.Modal(el, {keyboard:false,backdrop:'static'});
       if(this.#IsOpen) this.#MyModal.show();
     },5);
   }
