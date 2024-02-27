@@ -14,6 +14,16 @@ public static class FrackStatic {
     public abstract void Render(System.IO.TextWriter w);
     public virtual void Load() {
     }
+
+    public Task RenderAsPage(HttpContext ctx) {
+      ctx.Response.ContentType = "text/html; charset=utf-8";
+      ctx.Response.Headers.CacheControl = "no-cache";
+      Context = ctx;
+      Load();
+      var w = new System.IO.StringWriter();
+      Render(w);
+      return ctx.Response.WriteAsync(w.ToString());
+    }
   }
 
   public class Route : Attribute {
@@ -60,15 +70,7 @@ public static class FrackStatic {
   private static void UseFrackStatic3(WebApplication app, string pattern, IEnumerable<string> methods, Func<FrackStatic.Component> makePage) {
     app.MapMethods(pattern, methods, (HttpContext ctx) =>
     {
-      var p = makePage.Invoke();
-      ctx.Response.ContentType = "text/html; charset=utf-8";
-      ctx.Response.Headers.CacheControl = "no-cache";
-      p.Context = ctx;
-      p.Load();
-      var w = new System.IO.StringWriter();
-      p.Render(w);
-      return ctx.Response.WriteAsync(w.ToString());
+      return makePage.Invoke().RenderAsPage(ctx);
     });
   }
-
 }

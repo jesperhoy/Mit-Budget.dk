@@ -4,49 +4,52 @@ using System.Collections.Generic;
 [FrackStatic.Route(["/"])]
 public partial class PageIndex : FrackStatic.Component {
 
+  public string RenderFrag;
+
   public override void Render(System.IO.TextWriter _w1) {
-    _w1.Write(@"<!DOCTYPE html><html>
+    if(RenderFrag == null) {
+      _w1.Write(@"<!DOCTYPE html><html>
 <head>
   <meta name=""viewport"" content=""width=device-width, initial-scale=1"">
 
   <title>Mit-Budget.dk</title>
 
   <link");
-    _w1.Write(MakeAttr("href", JAH.StaticFileHash("css/mit-budget.css")));
+      _w1.Write(MakeAttr("href", JAH.StaticFileHash("css/mit-budget.css")));
 _w1.Write(@" rel=""stylesheet"">
   <script");
-    _w1.Write(MakeAttr("src", JAH.StaticFileHash("scripts/bootstrap.min.js")));
-    _w1.Write(@"></script>
+      _w1.Write(MakeAttr("src", JAH.StaticFileHash("scripts/bootstrap.min.js")));
+      _w1.Write(@"></script>
 
   ");
-    if(Context.Request.Path.ToString() == "/vue") {
-      _w1.Write(@"
+      if(Context.Request.Path.ToString() == "/vue") {
+        _w1.Write(@"
   <script");
-      _w1.Write(MakeAttr("src", JAH.StaticFileHash("scripts/vue.runtime.min.js")));
-      _w1.Write(@"></script>
+        _w1.Write(MakeAttr("src", JAH.StaticFileHash("scripts/vue.runtime.min.js")));
+        _w1.Write(@"></script>
   <script defer");
-      _w1.Write(MakeAttr("src", JAH.StaticFileHash("scripts/mit-budget-vue.js")));
-      _w1.Write(@"></script>
+        _w1.Write(MakeAttr("src", JAH.StaticFileHash("scripts/mit-budget-vue.js")));
+        _w1.Write(@"></script>
   ");
-    } else if(Context.Request.Path.ToString() == "/svelte") {
-      _w1.Write(@"
+      } else if(Context.Request.Path.ToString() == "/svelte") {
+        _w1.Write(@"
   <script defer");
-      _w1.Write(MakeAttr("src", JAH.StaticFileHash("scripts/mit-budget-svelte.js")));
-      _w1.Write(@"></script>
+        _w1.Write(MakeAttr("src", JAH.StaticFileHash("scripts/mit-budget-svelte.js")));
+        _w1.Write(@"></script>
   ");
-    } else {
-      _w1.Write(@" ");
-      // If Request.RawUrl = "/frontview"
-      _w1.Write(@"
+      } else {
+        _w1.Write(@" ");
+        // If Request.RawUrl = "/frontview"
+        _w1.Write(@"
   <script");
-      _w1.Write(MakeAttr("src", JAH.StaticFileHash("scripts/frontview.min.js")));
-      _w1.Write(@"></script>
+        _w1.Write(MakeAttr("src", JAH.StaticFileHash("scripts/frontview.min.js")));
+        _w1.Write(@"></script>
   <script defer");
-      _w1.Write(MakeAttr("src", JAH.StaticFileHash("scripts/mit-budget-frontview.js")));
-      _w1.Write(@"></script>
+        _w1.Write(MakeAttr("src", JAH.StaticFileHash("scripts/mit-budget-frontview.js")));
+        _w1.Write(@"></script>
   ");
-    }
-    _w1.Write(@"
+      }
+      _w1.Write(@"
 
   <script defer data-domain=""mit-budget.dk"" data-api=""/pl/event"" src=""/pl/script""></script>
 
@@ -104,8 +107,8 @@ _w1.Write(@" rel=""stylesheet"">
     <div class=""text-center bg-primary text-white p-2"">
       Mit-Budget.dk
       • © 2021-");
-    _w1.Write(he(DateTime.Now.Year));
-    _w1.Write(@" <a href=""https://jesperhoy.dev"" target=""blank"" class=""link-light"">Jesper Høy</a>
+      _w1.Write(he(DateTime.Now.Year));
+      _w1.Write(@" <a href=""https://jesperhoy.dev"" target=""blank"" class=""link-light"">Jesper Høy</a>
       • <a href=""https://github.com/jesperhoy/Mit-Budget.dk"" target=""_blank"" class=""link-light"">Kildekode</a>
       • <a href=""https://github.com/jesperhoy/Mit-Budget.dk/issues"" target=""_blank"" class=""link-light"">Rapporter fejl/mangler</a>
     </div>
@@ -114,6 +117,7 @@ _w1.Write(@" rel=""stylesheet"">
 
 </body>
 </html>");
+    }
   }
 
   private string MakeAttr(string name, object value) {

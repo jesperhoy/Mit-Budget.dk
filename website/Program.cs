@@ -7,7 +7,7 @@ app.UseStatusCodePages();
 if (app.Environment.IsDevelopment()) {
   app.UseDeveloperExceptionPage();
 } else { 
-  app.UseSeq("hEqf13BOdDuA13HJSSC5");
+  app.UseSeq("ws-mitbudget");
   app.UseDomainRedirection("mit-budget.dk");
 }
 app.UseFrackStatic();

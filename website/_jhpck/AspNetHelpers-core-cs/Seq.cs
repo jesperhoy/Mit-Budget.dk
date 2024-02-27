@@ -9,15 +9,15 @@ public static class Seq {
   }
   private static string[] LevelStr = { "Trace", "Debug", "Information", "Warning", "Error", "Fatal" };
 
-  private static string Token = null;
+  private static string AppID = null;
   private static bool DevEnv;
 
   private static LeakyBucket LBck = new LeakyBucket(5, new TimeSpan(0, 10, 0)); // max 5 pr. 10 min = max 30 pr hour
   private static int LBSkipped = 0;
 
-  public static void UseSeq(this WebApplication app, string seqToken) {
-    if (string.IsNullOrEmpty(seqToken)) throw new Exception("Invalid Seq token");
-    Token = seqToken;
+  public static void UseSeq(this WebApplication app, string appID) {
+    if (string.IsNullOrEmpty(appID)) throw new Exception("Invalid AppID");
+    AppID=appID;
     DevEnv = app.Environment.IsDevelopment();
 
     //Catch errors in secondary threads
@@ -80,7 +80,6 @@ public static class Seq {
     c.DefaultRequestHeaders.Accept.Clear();
     c.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
     var ct = new System.Net.Http.StringContent(msg.EncodeJson(false));
-    ct.Headers.Add("X-Seq-ApiKey", Token);
     ct.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/vnd.serilog.clef");
     return c.PostAsync(EventPostUrl, ct);
   }
@@ -91,6 +90,7 @@ public static class Seq {
     rv.Add("@l", LevelStr[(int)lvl]);
     rv.Add("@mt", tmpl);
     rv.Add("Environment", DevEnv ? "Development" : "Production");
+    rv.Add("Application", AppID);
     return rv;
   }
 
