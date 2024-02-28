@@ -194,6 +194,7 @@ async function KlikSave():Promise<void> {
     }
   }
   IkkeÆndret();
+  app.redraw();
 }
 
 async function KlikSletSky():Promise<void> {
@@ -206,6 +207,7 @@ async function KlikSletSky():Promise<void> {
   budgetid = 'nyt';
   document.location.hash = 'nyt';
   OldJSON = 'dummy'; //to trigger warning
+  app.redraw();
   ModalSletSky.Show();
 }
 
