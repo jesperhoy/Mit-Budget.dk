@@ -11,8 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="JhJson" Version="1.12.0" />
-    <PackageReference Include="JHSQLiteClient-Core" Version="0.7.1" />
+    <PackageReference Include="JhJson" Version="1.15.0" />
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">

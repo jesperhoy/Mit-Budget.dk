@@ -1,3 +1,5 @@
+Storage.GetCouchConfig();
+
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 JAH.App = app;
