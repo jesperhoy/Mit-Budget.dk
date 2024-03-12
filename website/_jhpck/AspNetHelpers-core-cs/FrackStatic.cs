@@ -1,29 +1,45 @@
-﻿using System.Net.Http;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.Extensions;
-using Microsoft.Extensions.FileSystemGlobbing.Internal;
-using Microsoft.Extensions.Hosting;
+﻿using System.Reflection;
 
 public static class FrackStatic {
 
   public abstract class Component {
     public HttpContext Context;
-    public abstract void Render(System.IO.TextWriter w);
-    public virtual void Load() {
+
+    public virtual Task Load() {
+      return Task.CompletedTask;
+    }
+    protected virtual Task RenderHtml(System.IO.TextWriter w) { 
+      return Task.CompletedTask;
+    }
+    public virtual Task Render(TextWriter w) {
+      return RenderHtml(w);
     }
 
-    public Task RenderAsPage(HttpContext ctx) {
+    async public Task RenderAsPage(HttpContext ctx) {
       ctx.Response.ContentType = "text/html; charset=utf-8";
       ctx.Response.Headers.CacheControl = "no-cache";
       Context = ctx;
-      Load();
-      var w = new System.IO.StringWriter();
-      Render(w);
-      return ctx.Response.WriteAsync(w.ToString());
+      System.IO.StringWriter w = new System.IO.StringWriter();
+      await Load();
+      await Render(w);
+      if (w.GetStringBuilder().Length > 0) {
+        await ctx.Response.WriteAsync(w.ToString());
+      }
     }
+
+    protected string MakeAttr(string name, object value) {
+      return value == null ? "" : (value is bool ? ((bool)value ? " " + name : "") : " " + name + "=\"" + he(value) + "\"");
+    }
+
+    protected string he(object v) {
+      return v.ToString().Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;").Replace("\"", "&quot;").Replace("'", "&apos;");
+    }
+
+    protected void MyForEach<T>(IEnumerable<T> col, Action<T, int> a) {
+      int i = 0;
+      foreach (var itm in col) a.Invoke(itm, i++);
+    }
+
   }
 
   public class Route : Attribute {

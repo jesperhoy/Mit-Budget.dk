@@ -6,7 +6,7 @@ public partial class PageIndex : FrackStatic.Component {
 
   public string RenderFrag;
 
-  public override void Render(System.IO.TextWriter _w1) {
+  protected async override Task RenderHtml(System.IO.TextWriter _w1) {
     if(RenderFrag == null) {
       _w1.Write(@"<!DOCTYPE html><html>
 <head>
@@ -118,14 +118,6 @@ _w1.Write(@" rel=""stylesheet"">
 </body>
 </html>");
     }
-  }
-
-  private string MakeAttr(string name, object value) {
-    return value==null ? "" : (value is bool ? ((bool)value ? " " + name : "") : " " + name + "=\"" + he(value) + "\"");
-  }
-
-  private string he(object v) {
-    return v.ToString().Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;").Replace("\"", "&quot;").Replace("'", "&apos;");
   }
 
 }
