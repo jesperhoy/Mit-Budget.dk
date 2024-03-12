@@ -5,9 +5,6 @@ public static class FrackStatic {
   public abstract class Component {
     public HttpContext Context;
 
-    public virtual Task Load() {
-      return Task.CompletedTask;
-    }
     protected virtual Task RenderHtml(System.IO.TextWriter w) { 
       return Task.CompletedTask;
     }
@@ -20,7 +17,6 @@ public static class FrackStatic {
       ctx.Response.Headers.CacheControl = "no-cache";
       Context = ctx;
       System.IO.StringWriter w = new System.IO.StringWriter();
-      await Load();
       await Render(w);
       if (w.GetStringBuilder().Length > 0) {
         await ctx.Response.WriteAsync(w.ToString());
