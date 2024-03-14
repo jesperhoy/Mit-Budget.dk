@@ -18,7 +18,7 @@
         return;
       }
       id = Guid.NewGuid();
-      Storage.Add(id, x);
+      await Storage.Add(id, x);
       ctx.Response.StatusCode = 201; // created
       ctx.Response.Headers.Add("Location", "/" + id.ToString().Replace("-", ""));
       return;
@@ -31,7 +31,7 @@
     }
     switch (ctx.Request.Method) {
       case "GET": {
-          var x = Storage.Fetch(id);
+          var x = await Storage.Fetch(id);
           if (x == null) {
             ctx.Response.StatusCode = 404;
             return;
@@ -47,22 +47,22 @@
             ctx.Response.StatusCode = 400;
             return;
           }
-          if (Storage.Update(id, x)) {
+          try {
+            await Storage.Update(id, x);
             ctx.Response.StatusCode = 204; // ok - no content
-          } else {
+          } catch (CouchDB.CouchNotFoundException ex) {
             ctx.Response.StatusCode = 404; // not found
           }
           break;
-
         }
       case "DELETE": {
-          if (Storage.Delete(id)) {
+          try {
+            await Storage.Delete(id);
             ctx.Response.StatusCode = 204; // ok - no content
-          } else {
+          } catch (CouchDB.CouchNotFoundException ex) {
             ctx.Response.StatusCode = 404; // not found
           }
           break;
-
         }
       default: {
           ctx.Response.StatusCode = 405; // method not allowed

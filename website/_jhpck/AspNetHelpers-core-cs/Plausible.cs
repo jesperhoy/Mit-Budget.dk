@@ -1,13 +1,9 @@
-﻿using System;
+﻿//** Plausible - v. 1.2 **
 
-//** Plausible - v. 1.2 **
+#pragma warning disable SYSLIB0014
 
 // Put this in <head>:
 //    <script defer data-domain="domain.com" data-api="/pl/event" src="/pl/script"></script>
-
-using System.Runtime.CompilerServices;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
 
 public static class Plausible {
 

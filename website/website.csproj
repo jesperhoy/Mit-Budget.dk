@@ -8,10 +8,11 @@
   <ItemGroup>
     <Folder Include="FrackPages\" />
     <Folder Include="_jhpck\AspNetHelpers-any-cs\" />
+    <Folder Include="_jhpck\couchdb-async\" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="JhJson" Version="1.15.0" />
+    <PackageReference Include="JhJson" Version="1.17.0" />
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">

@@ -6,6 +6,7 @@ public partial class PageIndex : FrackStatic.Component {
 
   public string RenderFrag;
 
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
   protected async override Task RenderHtml(System.IO.TextWriter _w1) {
     if(RenderFrag == null) {
       _w1.Write(@"<!DOCTYPE html><html>
