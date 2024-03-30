@@ -1,3 +1,5 @@
+Storage.DB=CouchDB.FromSharedConfig("MitBudget");
+
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 JAH.App = app;

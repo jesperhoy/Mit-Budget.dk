@@ -7,12 +7,11 @@
 
   <ItemGroup>
     <Folder Include="FrackPages\" />
-    <Folder Include="_jhpck\AspNetHelpers-any-cs\" />
+    <Folder Include="_jhpck\" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="JhJson" Version="1.17.0" />
-    <PackageReference Include="JHSQLiteClient" Version="0.7.1" />
+    <PackageReference Include="JhJson" Version="1.17.1" />
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
