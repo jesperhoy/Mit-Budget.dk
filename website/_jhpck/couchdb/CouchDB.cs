@@ -1,15 +1,24 @@
 ﻿#pragma warning disable SYSLIB0014
+using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Net;
+using System.Threading.Tasks;
 
-public class CouchDB(string server, string database, string userID, string password) {
+public class CouchDB {
 
-  private readonly string BaseUrl = "http://" + server + ":5984/" + database;
-  private readonly string Auth = System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(userID + ':' + password));
+  private readonly string BaseUrl;
+  private readonly string Auth;
+
+  public CouchDB(string server, string database, string userID, string password) {
+    BaseUrl = "http://" + server + ":5984/" + database;
+    Auth = System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(userID + ':' + password));
+  }
 
   public static CouchDB FromSharedConfig(string dbID) {
     string x = JHSharedConfig.Get("CouchDB", dbID);
     int i;
-    Dictionary<string, string> dict = [];
+    Dictionary<string, string> dict = new Dictionary<string, string>();
     foreach (string y in x.Split(';')) {
       i = y.IndexOf('=');
       if (i < 0) continue;
@@ -45,7 +54,7 @@ public class CouchDB(string server, string database, string userID, string passw
       return null;
     }
     var _rev = resp.Headers["ETag"].Trim();
-    if (_rev.StartsWith('"')) _rev = _rev.Substring(1, _rev.Length - 2);
+    if (_rev.StartsWith("\"")) _rev = _rev.Substring(1, _rev.Length - 2);
     return _rev;
   }
    public string GetDocRev(string docID) {
@@ -59,7 +68,7 @@ public class CouchDB(string server, string database, string userID, string passw
       return null;
     }
     var _rev = resp.Headers["ETag"].Trim();
-    if (_rev.StartsWith('"')) _rev = _rev.Substring(1, _rev.Length - 2);
+    if (_rev.StartsWith("\"")) _rev = _rev.Substring(1, _rev.Length - 2);
     return _rev;
   }
 
@@ -88,9 +97,13 @@ public class CouchDB(string server, string database, string userID, string passw
     return (JhJson.Object)JhJson.Parse(x);
   }
 
-  public class CouchConflictException(Exception ex) : Exception(null, ex) {  }
+  public class CouchConflictException : Exception {
+    public CouchConflictException(Exception ex): base(null, ex) { }
+  }
 
-  public class CouchNotFoundException(Exception ex) : Exception(null, ex) {  }
+  public class CouchNotFoundException : Exception {
+    public CouchNotFoundException(Exception ex) : base(null, ex) { }
+  }
 
   async public Task<string> UpdateDocAsync(string docID, JhJson.Object obj, string _rev=null) {
     var wc = PrepWC();
@@ -105,7 +118,7 @@ public class CouchDB(string server, string database, string userID, string passw
       wc.Dispose();
     }
     _rev = wc.ResponseHeaders["ETag"].Trim();
-    if (_rev.StartsWith('"')) _rev = _rev.Substring(1, _rev.Length - 2);
+    if (_rev.StartsWith("\"")) _rev = _rev.Substring(1, _rev.Length - 2);
     return _rev;
   }
   public string UpdateDoc(string docID, JhJson.Object obj, string _rev = null) {
@@ -121,7 +134,7 @@ public class CouchDB(string server, string database, string userID, string passw
       wc.Dispose();
     }
     _rev = wc.ResponseHeaders["ETag"].Trim();
-    if (_rev.StartsWith('"')) _rev = _rev.Substring(1, _rev.Length - 2);
+    if (_rev.StartsWith("\"")) _rev = _rev.Substring(1, _rev.Length - 2);
     return _rev;
   }
 
