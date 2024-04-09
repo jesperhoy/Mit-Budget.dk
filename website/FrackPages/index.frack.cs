@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using static FrackStatic;
 
 [FrackStatic.Route(["/"])]
-public partial class PageIndex : FrackStatic.Component {
-
-  public string RenderFrag;
+public class PageIndex : FrackStatic.IRenderable {
 
 #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
-  protected async override Task RenderHtml(System.IO.TextWriter _w1) {
-    if(RenderFrag == null) {
+
+  public Task Render(HttpContext Context, System.IO.TextWriter w) => RenderCompiled(Context, w);
+
+  private async Task RenderCompiled(HttpContext Context, System.IO.TextWriter _w1, string _Frag = null) {
+    if(_Frag == null) {
       _w1.Write(@"<!DOCTYPE html><html>
 <head>
   <meta name=""viewport"" content=""width=device-width, initial-scale=1"">
@@ -108,7 +108,7 @@ _w1.Write(@" rel=""stylesheet"">
     <div class=""text-center bg-primary text-white p-2"">
       Mit-Budget.dk
       • © 2021-");
-      _w1.Write(he(DateTime.Now.Year));
+      await FrackStatic.Render(Context, _w1, DateTime.Now.Year);
       _w1.Write(@" <a href=""https://jesperhoy.dev"" target=""blank"" class=""link-light"">Jesper Høy</a>
       • <a href=""https://github.com/jesperhoy/Mit-Budget.dk"" target=""_blank"" class=""link-light"">Kildekode</a>
       • <a href=""https://github.com/jesperhoy/Mit-Budget.dk/issues"" target=""_blank"" class=""link-light"">Rapporter fejl/mangler</a>
