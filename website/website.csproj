@@ -6,16 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="FrackPages\" />
     <Folder Include="_jhpck\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="JhJson" Version="1.17.1" />
+    <PackageReference Include="Spirit" Version="0.2.5" />
   </ItemGroup>
-
-  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="C:\Develop\private\Frack\TemplateCompiler\bin\Release\TemplateCompiler.exe -cs -static $(ProjectDir)" />
-  </Target>
 
 </Project>

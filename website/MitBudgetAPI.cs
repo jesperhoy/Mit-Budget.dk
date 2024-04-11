@@ -20,7 +20,7 @@
       id = Guid.NewGuid();
       await Storage.Add(id, x);
       ctx.Response.StatusCode = 201; // created
-      ctx.Response.Headers.Add("Location", "/" + id.ToString().Replace("-", ""));
+      ctx.Response.Headers["Location"] = "#" + id.ToString().Replace("-", "");
       return;
     }
     const string s = "/api/budget/";
@@ -50,7 +50,7 @@
           try {
             await Storage.Update(id, x);
             ctx.Response.StatusCode = 204; // ok - no content
-          } catch (CouchDB.CouchNotFoundException ex) {
+          } catch (CouchDB.CouchNotFoundException) {
             ctx.Response.StatusCode = 404; // not found
           }
           break;
@@ -59,7 +59,7 @@
           try {
             await Storage.Delete(id);
             ctx.Response.StatusCode = 204; // ok - no content
-          } catch (CouchDB.CouchNotFoundException ex) {
+          } catch (CouchDB.CouchNotFoundException) {
             ctx.Response.StatusCode = 404; // not found
           }
           break;

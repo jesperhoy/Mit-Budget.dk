@@ -1,45 +1,48 @@
-@class PageIndex
-@route /
+﻿[Spirit.Route(["/","/vue","/svelte"])]
+class IndexPage : Spirit.Component {
 
-<!DOCTYPE html>
+  public override Spirit.TmplRes Render(HttpContext ctx) {
+    var p = ctx.Request.Path.ToString();
+
+    return h($@"<!DOCTYPE html>
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name=""viewport"" content=""width=device-width, initial-scale=1"">
 
   <title>Mit-Budget.dk</title>
 
-  <link href={JAH.StaticFileHash("css/mit-budget.css")} rel="stylesheet" />
+  <link href={JAH.StaticFileHash("css/mit-budget.css")} rel=""stylesheet"" />
   <script src={JAH.StaticFileHash("scripts/bootstrap.min.js")}></script>
 
-  {#if Context.Request.Path.ToString() == "/vue"}
+  {(p=="/vue" ? h($@"
   <script src={JAH.StaticFileHash("scripts/vue.runtime.min.js")}></script>
   <script defer src={JAH.StaticFileHash("scripts/mit-budget-vue.js")}></script>
-  {:else if Context.Request.Path.ToString() == "/svelte"}
+") : (p=="/svelte" ? h($@"
   <script defer src={JAH.StaticFileHash("scripts/mit-budget-svelte.js")}></script>
-  {:else} <!-- If Request.RawUrl = "/frontview" -->
+") : h($@"
   <script src={JAH.StaticFileHash("scripts/frontview.min.js")}></script>
   <script defer src={JAH.StaticFileHash("scripts/mit-budget-frontview.js")}></script>
-  {/if}
+")))}
 
-  <script defer data-domain="mit-budget.dk" data-api="/pl/event" src="/pl/script"></script>
+  <script defer data-domain=""mit-budget.dk"" data-api=""/pl/event"" src=""/pl/script""></script>
 
 </head>
-<body style="background-color:#ccc">
+<body style=""background-color:#ccc"">
 
-  <div style="display:flex;flex-direction:column;max-width:960px;margin:0 auto;background-color:white;min-height:100vh" id="base">
+  <div style=""display:flex;flex-direction:column;max-width:960px;margin:0 auto;background-color:white;min-height:100vh"" id=""base"">
 
-    <div style="padding: 1rem;flex-grow:1">
+    <div style=""padding: 1rem;flex-grow:1"">
 
-      <div class="d-flex">
+      <div class=""d-flex"">
 
-        <h1 class="text-primary me-auto">Mit-Budget.dk</h1>
+        <h1 class=""text-primary me-auto"">Mit-Budget.dk</h1>
 
         <a href='https://ko-fi.com/jesperhoy' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi2.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
       </div>
 
       <hr />
 
-      <div id="intro">
+      <div id=""intro"">
 
         <p>Mit-Budget.dk er en gratis web-applikation (et program som kører i din browser) som gør det nemt at lave og arbejde med et personligt eller virksomheds-relateret budget.</p>
 
@@ -61,27 +64,34 @@
           Denne adresse kan nemt deles med andre - inkl. bank-rådgiver, revisor, mv.
         </p>
 
-        <p>Mit-budget.dk er Open Source - så hvis du er til den slags, kan du <a href="https://github.com/jesperhoy/Mit-Budget.dk" target="_blank">se og bidrage til kilde-koden på GitHub</a>.</p>
+        <p>Mit-budget.dk er Open Source - så hvis du er til den slags, kan du <a href=""https://github.com/jesperhoy/Mit-Budget.dk"" target=""_blank"">se og bidrage til kilde-koden på GitHub</a>.</p>
 
-        <p>Hvis du finder fejl eller mangler i Mit-Budget.dk, kan du rapportere det ved at oprette et <a href="https://github.com/jesperhoy/Mit-Budget.dk/issues" target="_blank">"Issue" på GitHub</a></p>
+        <p>Hvis du finder fejl eller mangler i Mit-Budget.dk, kan du rapportere det ved at oprette et <a href=""https://github.com/jesperhoy/Mit-Budget.dk/issues"" target=""_blank"">""Issue"" på GitHub</a></p>
 
-        <p>Klik på knappen "Nyt budget" herunder for at komme i gang.</p>
+        <p>Klik på knappen ""Nyt budget"" herunder for at komme i gang.</p>
 
       </div>
 
-      <div id="app"></div>
+      <div id=""app""></div>
 
     </div>
 
 
-    <div class="text-center bg-primary text-white p-2">
+    <div class=""text-center bg-primary text-white p-2"">
       Mit-Budget.dk
-      &bull; &copy; 2021-{DateTime.Now.Year} <a class="link-light" href="https://jesperhoy.dev" target="blank">Jesper Høy</a>
-      &bull; <a class="link-light" href="https://github.com/jesperhoy/Mit-Budget.dk" target="_blank">Kildekode</a>
-      &bull; <a class="link-light" href="https://github.com/jesperhoy/Mit-Budget.dk/issues" target="_blank">Rapporter fejl/mangler</a>
+      &bull; &copy; 2021-{DateTime.Now.Year} <a class=""link-light"" href=""https://jesperhoy.dev"" target=""blank"">Jesper Høy</a>
+      &bull; <a class=""link-light"" href=""https://github.com/jesperhoy/Mit-Budget.dk"" target=""_blank"">Kildekode</a>
+      &bull; <a class=""link-light"" href=""https://github.com/jesperhoy/Mit-Budget.dk/issues"" target=""_blank"">Rapporter fejl/mangler</a>
     </div>
 
   </div>
 
 </body>
 </html>
+");
+
+
+
+  }
+
+}
