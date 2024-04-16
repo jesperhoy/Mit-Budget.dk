@@ -687,7 +687,7 @@ function RenderModalGemt():ModalRender {
 
 
 
-const app=FV.app("#app",RenderApp);
+const app=Katla.app("#app",RenderApp);
 
 window.addEventListener('beforeunload',
   function (e) {

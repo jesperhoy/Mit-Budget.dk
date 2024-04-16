@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <PackageReference Include="JhJson" Version="1.17.1" />
-    <PackageReference Include="Spirit" Version="0.2.5" />
+    <PackageReference Include="Spirit" Version="0.3.3" />
   </ItemGroup>
 
 </Project>

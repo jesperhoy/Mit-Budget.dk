@@ -1,18 +1,18 @@
-// TypeScript declaration file for FrontView 6.1+
+// TypeScript declaration file for Katla 6.1+
 
 declare global {
-  const FV: {
+  const Katla: {
     readonly html:(fixed:TemplateStringsArray,...args:any[])=> any;
-    readonly app: (el:string|HTMLElement,render:()=>any)=>FrontView.AppType;
+    readonly app: (el:string|HTMLElement,render:()=>any)=>Katla.AppType;
     readonly raw: (html:string)=> any;
-    readonly directive: (name:string,init:(element:HTMLElement,value:any,mods:string[],app:FrontView.AppType)=>(value:any)=>void)=>void;
+    readonly directive: (name:string,init:(element:HTMLElement,value:any,mods:string[],app:Katla.AppType)=>(value:any)=>void)=>void;
     readonly memo: (deps:any[],render:()=>any)=>any;
   }  
   const html:(fixed:TemplateStringsArray,...args:any[])=> any;
 }
 
 
-export namespace FrontView {
+export namespace Katla {
 
   type AppType={
     readonly redraw: ()=>void;

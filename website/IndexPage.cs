@@ -1,7 +1,7 @@
 ﻿[Spirit.Route(["/","/vue","/svelte"])]
 class IndexPage : Spirit.Component {
 
-  public override Spirit.TmplRes Render(HttpContext ctx) {
+  public override Spirit.Content Render(HttpContext ctx) {
     var p = ctx.Request.Path.ToString();
 
     return h($@"<!DOCTYPE html>
@@ -20,8 +20,8 @@ class IndexPage : Spirit.Component {
 ") : (p=="/svelte" ? h($@"
   <script defer src={JAH.StaticFileHash("scripts/mit-budget-svelte.js")}></script>
 ") : h($@"
-  <script src={JAH.StaticFileHash("scripts/frontview.min.js")}></script>
-  <script defer src={JAH.StaticFileHash("scripts/mit-budget-frontview.js")}></script>
+  <script src={JAH.StaticFileHash("scripts/katla.js")}></script>
+  <script defer src={JAH.StaticFileHash("scripts/mit-budget-katla.js")}></script>
 ")))}
 
   <script defer data-domain=""mit-budget.dk"" data-api=""/pl/event"" src=""/pl/script""></script>
