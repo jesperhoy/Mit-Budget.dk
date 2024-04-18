@@ -18,7 +18,7 @@
         return;
       }
       id = Guid.NewGuid();
-      await Storage.Add(id, x);
+      Storage.Add(id, x);
       ctx.Response.StatusCode = 201; // created
       ctx.Response.Headers["Location"] = "#" + id.ToString().Replace("-", "");
       return;
@@ -31,7 +31,7 @@
     }
     switch (ctx.Request.Method) {
       case "GET": {
-          var x = await Storage.Fetch(id);
+          var x = Storage.Fetch(id);
           if (x == null) {
             ctx.Response.StatusCode = 404;
             return;
@@ -47,30 +47,27 @@
             ctx.Response.StatusCode = 400;
             return;
           }
-          try {
-            await Storage.Update(id, x);
+          if (Storage.Update(id, x)) {
             ctx.Response.StatusCode = 204; // ok - no content
-          } catch (CouchDB.CouchNotFoundException) {
+          } else {
             ctx.Response.StatusCode = 404; // not found
           }
           break;
         }
       case "DELETE": {
-          try {
-            await Storage.Delete(id);
+          if (Storage.Delete(id)) {
             ctx.Response.StatusCode = 204; // ok - no content
-          } catch (CouchDB.CouchNotFoundException) {
+          } else { 
             ctx.Response.StatusCode = 404; // not found
           }
-          break;
+        break;
         }
       default: {
-          ctx.Response.StatusCode = 405; // method not allowed
-          break;
-        }
-    }
+        ctx.Response.StatusCode = 405; // method not allowed
+        break;
+      }
   }
-
+}
   private static bool VerifyUpload(string x) {
     var o = (JhJson.Object)JhJson.Parse(x);
     var ma = new[] { "navn", "startmåned", "startsaldo", "items", "nextid" };
