@@ -1,31 +1,30 @@
 ﻿public static class Storage {
   
-  public static JHSQLiteClient.Connection OpenDB() {
-    return JHSQLiteClient.Connection.FromConnString(JHSharedConfig.Get("sqlite", "MitBudget"));
-  }
+  public static OpbevarBucket Bucket = new("budget");
 
   public static string Fetch(Guid id) {
-    using var dbConn = OpenDB();
-    var rv = dbConn.ExecuteScalar("SELECT data FROM budget WHERE id=@p1", id.ToString());
-    if (rv.IsNull) return null;
-    return rv.AsString;
+    try {
+      return System.Text.Encoding.UTF8.GetString(Bucket.GetFile(id.ToString()));
+    } catch (System.IO.FileNotFoundException ex) {
+      return null;
+    }
   }
 
   public static void Add(Guid id, string data) {
-    using (var dbConn = OpenDB()) {
-      dbConn.ExecuteNonQuery("INSERT INTO budget (id,data) VALUES (@p1,@p2)", id.ToString(), data);
-    }
+    Bucket.UploadFile(id.ToString(),"application/json",System.Text.Encoding.UTF8.GetBytes(data));
   }
 
   public static bool Update(Guid id, string data) {
-    using (var dbConn = OpenDB()) {
-      return dbConn.ExecuteNonQuery("UPDATE budget SET data=@p1 WHERE id=@p2", data, id.ToString()) == 1;
-    }
+    Add(id, data);
+    return true;
   }
 
   public static bool Delete(Guid id) {
-    using (var dbConn = OpenDB()) {
-      return dbConn.ExecuteNonQuery("DELETE FROM budget WHERE id=@p1", id.ToString()) == 1;
+    try {
+      Bucket.DeleteFile(id.ToString());
+      return true;
+    } catch (Exception) { 
+      return false;
     }
   }
 
