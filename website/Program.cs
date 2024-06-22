@@ -10,7 +10,7 @@ if (app.Environment.IsDevelopment()) {
   app.UseSeq("ws-mitbudget");
   app.UseDomainRedirection("mit-budget.dk");
 }
-app.UseSpirit();
+app.UseFrack();
 app.Map("/api/budget", MitBudgetAPI.ProcReq);
 app.Map("/api/budget/{id}", MitBudgetAPI.ProcReq);
 app.UseStaticFiles();
