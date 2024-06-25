@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Frack-Core" Version="2.0.2" />
+    <PackageReference Include="Frack-Core" Version="2.0.19" />
     <PackageReference Include="JhJson" Version="1.17.1" />
   </ItemGroup>
 
