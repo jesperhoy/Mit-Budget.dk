@@ -1,13 +1,10 @@
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
-JAH.App = app;
+app.UseJAH("ws-mitbudget");
 
 app.UseStatusCodePages();
 
-if (app.Environment.IsDevelopment()) {
-  app.UseDeveloperExceptionPage();
-} else { 
-  app.UseSeq("ws-mitbudget");
+if (!app.Environment.IsDevelopment()) {
   app.UseDomainRedirection("mit-budget.dk");
 }
 app.UseFrack();

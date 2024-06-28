@@ -2,7 +2,7 @@
 
   //Limit access to 1440 API requests / day / ip address = 1 every minute
   //with a burst rate of 25 requests
-  public static LeakyBuckets RateLimit = new LeakyBuckets(25, new TimeSpan(0, 1, 0));
+  public static JAH.LeakyBuckets RateLimit = new(25, new TimeSpan(0, 1, 0));
 
   async public static Task ProcReq(HttpContext ctx) {
     if (!RateLimit.AddDrop(ctx.Connection.RemoteIpAddress.ToString())) {
