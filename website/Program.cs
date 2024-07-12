@@ -7,7 +7,7 @@ app.UseStatusCodePages();
 if (!app.Environment.IsDevelopment()) {
   app.UseDomainRedirection("mit-budget.dk");
 }
-app.UseFrack();
+app.UseSpirit();
 app.Map("/api/budget", MitBudgetAPI.ProcReq);
 app.Map("/api/budget/{id}", MitBudgetAPI.ProcReq);
 app.UseStaticFiles();

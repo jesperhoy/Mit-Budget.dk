@@ -1,7 +1,7 @@
-﻿[Frack.Route(["/","/vue","/svelte"])]
-class IndexPage : Frack.Component {
+﻿[Spirit.Route(["/","/vue","/svelte"])]
+class IndexPage : Spirit.Page {
 
-  public override Frack.HtmlBlock Render() {
+  public override Spirit.HtmlBlock Render() {
     var p = Context.Request.Path.ToString();
 
     return h($@"<!DOCTYPE html>
