@@ -3,18 +3,27 @@ import { FormatBeløb } from "./app";
 export class CmpAmount {
   required=false;
   validity="";
-  value=0;
   onChange:(v:number)=>void;
 
   #BadVal=false;
   #DispVal:string;
+  
+  #value: number=0;
+  get value():number {  
+    return this.#value;
+  } 
+  set value(v:number) {
+    if(v===this.#value) return;
+    this.#value=v;
+    this.#UpdateDisplayValue();
+  }
 
   load():void {
     this.#UpdateDisplayValue();
   }
 
   #UpdateDisplayValue():void {
-    this.#DispVal = this.value === 0 ? '' : FormatBeløb(this.value);
+    this.#DispVal = this.#value === 0 ? '' : FormatBeløb(this.#value);
   }
 
   #Input(e:InputEvent,changed:boolean):void {
@@ -26,7 +35,7 @@ export class CmpAmount {
       return;
     }
     this.#BadVal = false;
-    this.value = v;
+    this.#value = v;
     if(this.onChange) this.onChange(v);
     if (changed) this.#UpdateDisplayValue();
   }
