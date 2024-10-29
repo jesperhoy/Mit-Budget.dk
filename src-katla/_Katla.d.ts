@@ -1,33 +1,43 @@
-// TypeScript declaration file for Katla 6.1+
+// TypeScript declaration file for Katla 2.0.0
 
-declare global {
-  const Katla: {
-    readonly html:(fixed:TemplateStringsArray,...args:any[])=> any;
-    readonly app: (el:string|HTMLElement,render:()=>any)=>Katla.AppType;
-    readonly raw: (html:string)=> any;
-    readonly directive: (name:string,init:(element:HTMLElement,value:any,mods:string[],app:Katla.AppType)=>(value:any)=>void)=>void;
-    readonly memo: (deps:any[],render:()=>any)=>any;
-  }  
+declare const html:(fixed:TemplateStringsArray,...args:any[])=> any;
+
+declare namespace Katla {
+
   const html:(fixed:TemplateStringsArray,...args:any[])=> any;
-}
+  const mount: (el:string|HTMLElement,render:()=>any)=>()=>Promise<void>;
+  const raw: (html:string)=> any;
+  const directive: (name:string,init:(element:HTMLElement,value:any,mods:string[],redraw:()=>Promise<void>)=>(value:any)=>void)=>void;
+  const memo: (deps:any[],render:()=>any)=>any;
 
 
-export namespace Katla {
-
-  type AppType={
-    readonly redraw: ()=>void;
-    autoRedraw: boolean;
-    readonly clear:()=>void;
-  }
-  
   type ComponentType = {
-    render: ()=>any;
-    load?: ()=>void;
-    unload?: ()=>void;
-    $app?:AppType; // The current App object (see "Initialize app" above) - typically used to access the `app.redraw()` method.
-    $parent?:ComponentType; // The parent component (if any).
-    $set?:(key:string,value:any)=>void; // Use this to set a context value - visible to current and child components (through their `.$get` method).
-    $get?:(key:string)=>any; // Use this to get a context value - from current or parent components.
-    $redraw?:()=>void; // redraw just this component (and subtree).
+    render:()=>any;
+    load?:()=>void;
+    unload?:()=>void;
+    $get:(key:string)=>any;
+    $set:(key:string,v:any)=>void;
+    $parent?:ComponentType;
+    $redraw:()=>Promise<void>;
+    /** @deprecated Use .$redraw instead */
+    $app?:{redraw:()=>Promise<void>};  // only for backwards compat
   }
+
+  type ComponentWrapper=[new()=>ComponentType] |
+    [new()=>ComponentType,Object] |
+    [new()=>ComponentType,Object,(c:ComponentType)=>void];
+
+  abstract class Component {
+    static wrap(props?:Object,ref?:(c:ComponentType)=>void) :ComponentWrapper 
+
+    abstract render():any;
+    load():void 
+    unload():void 
+
+    $redraw:()=>Promise<void>;
+    $parent:ComponentType;
+    $set:(key:string,v:any)=>void;
+    $get:(key:string)=>any;
+  }
+
 }

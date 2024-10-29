@@ -194,7 +194,7 @@ async function KlikSave():Promise<void> {
     }
   }
   IkkeÆndret();
-  app.redraw();
+  AppRedraw();
 }
 
 async function KlikSletSky():Promise<void> {
@@ -207,7 +207,7 @@ async function KlikSletSky():Promise<void> {
   budgetid = 'nyt';
   document.location.hash = 'nyt';
   OldJSON = 'dummy'; //to trigger warning
-  app.redraw();
+  AppRedraw();
   ModalSletSky.Show();
 }
 
@@ -245,7 +245,7 @@ async function HashChanged():Promise<void> {
   if (NewID === 'nyt') {
     budget = LavNyt();
     IkkeÆndret();
-    app.redraw();
+    AppRedraw();
     return;
   }
   budget = null;
@@ -262,7 +262,7 @@ async function HashChanged():Promise<void> {
     budget = await r.json();
     IkkeÆndret();
   }
-  app.redraw();
+  AppRedraw();
 };
 
 function LavItemPosteringer(item:BudgetItem, fraDato:Date, tilDato:Date):Postering[] {
@@ -685,9 +685,7 @@ function RenderModalGemt():ModalRender {
 }
 
 
-
-
-const app=Katla.app("#app",RenderApp);
+const AppRedraw=Katla.mount("#app",RenderApp);
 
 window.addEventListener('beforeunload',
   function (e) {
