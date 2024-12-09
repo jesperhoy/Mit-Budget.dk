@@ -8,7 +8,7 @@ Mit-Budget.dk is available in 3 editions:
 - A [Svelte](https://svelte.dev) edition (<https://mit-budget.dk/svelte>)
 - A [Vue.js](https://vuejs.org) edition (<https://mit-budget.dk/vue>)
 
-Read the background story at https://jesperhoy.dev/svelte-vs-vuejs
+Read the background story at https://jesperhoy.dk/svelte-vs-vuejs
 
 (*) "Katla.js" is my own home-grown front-end-framework.
 
