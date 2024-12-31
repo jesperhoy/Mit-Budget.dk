@@ -6,9 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="JespersAspHelpers" Version="2.1.3" />
+    <PackageReference Include="JespersAspHelpers" Version="2.1.4" />
     <PackageReference Include="JhJson" Version="1.17.2" />
-    <PackageReference Include="Spirit" Version="4.0.10" />
+    <PackageReference Include="Spirit" Version="4.0.13" />
   </ItemGroup>
 
 </Project>
