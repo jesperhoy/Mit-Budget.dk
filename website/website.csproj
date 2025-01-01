@@ -6,9 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="JespersAspHelpers" Version="2.1.4" />
+    <PackageReference Include="JespersAspHelpers" Version="2.2.1" />
     <PackageReference Include="JhJson" Version="1.17.2" />
     <PackageReference Include="Spirit" Version="4.0.13" />
   </ItemGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="C:\Develop\private\JespersAspHelpers\jah-build\bin\Release\net8.0\jah-build.exe" />
+  </Target>
 
 </Project>

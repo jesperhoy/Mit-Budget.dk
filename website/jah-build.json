@@ -1,0 +1,7 @@
+[
+  {
+    "type": "ts",
+    "src": "../src-katla/app.ts",
+    "dst": "wwwroot/scripts/mit-budget-katla.js"
+  }
+]
