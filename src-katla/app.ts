@@ -194,7 +194,6 @@ async function KlikSave():Promise<void> {
     }
   }
   IkkeÆndret();
-  AppRedraw();
 }
 
 async function KlikSletSky():Promise<void> {
@@ -207,7 +206,7 @@ async function KlikSletSky():Promise<void> {
   budgetid = 'nyt';
   document.location.hash = 'nyt';
   OldJSON = 'dummy'; //to trigger warning
-  AppRedraw();
+  await AppRedraw();
   ModalSletSky.Show();
 }
 
@@ -245,7 +244,7 @@ async function HashChanged():Promise<void> {
   if (NewID === 'nyt') {
     budget = LavNyt();
     IkkeÆndret();
-    AppRedraw();
+    await AppRedraw();
     return;
   }
   budget = null;
@@ -262,7 +261,7 @@ async function HashChanged():Promise<void> {
     budget = await r.json();
     IkkeÆndret();
   }
-  AppRedraw();
+  await AppRedraw();
 };
 
 function LavItemPosteringer(item:BudgetItem, fraDato:Date, tilDato:Date):Postering[] {
