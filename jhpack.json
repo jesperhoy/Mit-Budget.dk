@@ -1,0 +1,9 @@
+{
+  "packages" : [
+    {
+      "id" : "katla",
+      "version" : "3.3.0",
+      "path" : "website\\wwwroot\\katla"
+    }
+  ]
+}

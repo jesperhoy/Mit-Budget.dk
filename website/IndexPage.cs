@@ -20,7 +20,7 @@ class IndexPage : Spirit.Page {
 ") : (p=="/svelte" ? h($@"
   <script defer src={JAH.StaticFileHash("scripts/mit-budget-svelte.js")}></script>
 ") : h($@"
-  <script src={JAH.StaticFileHash("scripts/katla.js")}></script>
+  <script src={JAH.StaticFileHash("katla/katla.js")}></script>
   <script defer src={JAH.StaticFileHash("scripts/mit-budget-katla.js")}></script>
 ")))}
 
