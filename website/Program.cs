@@ -6,12 +6,17 @@ app.UseStatusCodePages();
 
 if (!app.Environment.IsDevelopment()) {
   app.UseDomainRedirection("mit-budget.dk");
+  app.UseHttpsRedirection();
+} else {
+  app.UseDeveloperExceptionPage();
 }
-app.UseSpirit();
+
+app.UseStaticFiles();
+
 app.Map("/api/budget", MitBudgetAPI.ProcReq);
 app.Map("/api/budget/{id}", MitBudgetAPI.ProcReq);
-app.UseStaticFiles();
-app.UsePlausible();
 
+app.MapSpiritPages();
+app.MapPlausible();
 
 app.Run();
