@@ -1,6 +1,6 @@
 ﻿public static class Storage {
   
-  public static JAH.FileCasaService Bucket = new("budget");
+  public static JAH.OwnCdnService Bucket = new("budget");
 
   public static string Fetch(Guid id) {
     try {
