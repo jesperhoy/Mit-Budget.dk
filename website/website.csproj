@@ -7,8 +7,8 @@
 
   <ItemGroup>
     <PackageReference Include="JespersAspHelpers" Version="2.4.5" />
-    <PackageReference Include="JhJson" Version="1.17.2" />
-    <PackageReference Include="Spirit" Version="4.4.0" />
+    <PackageReference Include="JhJson" Version="1.18.1" />
+    <PackageReference Include="Spirit" Version="5.0.10" />
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
