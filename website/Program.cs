@@ -16,7 +16,7 @@ app.UseStaticFiles();
 app.Map("/api/budget", MitBudgetAPI.ProcReq);
 app.Map("/api/budget/{id}", MitBudgetAPI.ProcReq);
 
-app.UseSpirit();
+app.MapSpirit();
 app.MapPlausible();
 
 app.Run();

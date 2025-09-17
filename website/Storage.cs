@@ -1,10 +1,10 @@
 ﻿public static class Storage {
   
-  public static JAH.OwnCdnService Bucket = new("budget");
-
+  public static JAH.OwnCdnClient Bucket = JAH.OwnCdnClient.FromSharedConfig("budget");
+  
   public static string Fetch(Guid id) {
     try {
-      return System.Text.Encoding.UTF8.GetString(Bucket.GetFile(id.ToString()));
+      return System.Text.Encoding.UTF8.GetString(Bucket.GetFile(id.ToString()).Body);
     } catch (System.IO.FileNotFoundException ex) {
       return null;
     }
