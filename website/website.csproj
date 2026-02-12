@@ -1,14 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="JespersAspHelpers" Version="2.6.0" />
-    <PackageReference Include="JhJson" Version="1.19.1" />
-    <PackageReference Include="Spirit" Version="5.16.2" />
+    <PackageReference Include="JhJson" Version="1.21.0" />
+    <PackageReference Include="Spirit" Version="5.31.3" />
   </ItemGroup>
 
   <PropertyGroup>
