@@ -1,4 +1,4 @@
-import { CmpAmount } from "./amount";
+﻿import { CmpAmount } from "./amount";
 import { Icon } from "./icon";
 import { CmpItem } from "./item";
 import { CmpModal, ModalRender } from "./modal";
@@ -369,6 +369,10 @@ function LavPosteringer(items:BudgetItem[], fraDato:Date, tilDato:Date, startSal
   rv.sort(function (a, b) {
     if (a.dato < b.dato) return -1;
     if (a.dato > b.dato) return 1;
+    if (a.itemid == 0) return -1;
+    if (b.itemid == 0) return 1;
+    if (a.beløb > 0 && b.beløb < 0) return -1;
+    if (a.beløb < 0 && b.beløb > 0) return 1;
     return 0;
   });
   let bal = 0;
